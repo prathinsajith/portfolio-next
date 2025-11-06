@@ -1,18 +1,18 @@
-"use client";
+"use client"
 
-import { motion } from "framer-motion";
-import Image from "next/image";
+import { motion } from "framer-motion"
+import Image from "next/image"
 
 interface Skill {
-  name: string;
-  level: string;
-  image: string;
-  color: string;
+  name: string
+  level: string
+  image: string
+  color: string
 }
 
 interface SkillCardProps {
-  skill: Skill;
-  index: number;
+  skill: Skill
+  index: number
 }
 
 export default function SkillCard({ skill, index }: SkillCardProps) {
@@ -34,7 +34,7 @@ export default function SkillCard({ skill, index }: SkillCardProps) {
             transition={{ duration: 0.5 }}
           >
             <Image
-              src={skill.image}
+              src={skill.image || "/placeholder.svg"}
               alt={skill.name}
               width={56}
               height={56}
@@ -47,5 +47,5 @@ export default function SkillCard({ skill, index }: SkillCardProps) {
         <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#D4AF37]/0 to-[#D4AF37]/0 group-hover:from-[#D4AF37]/5 group-hover:to-transparent transition-all duration-300" />
       </div>
     </motion.div>
-  );
+  )
 }

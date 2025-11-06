@@ -1,347 +1,238 @@
-"use client";
+"use client"
 
-import React, { useState, useEffect, useMemo } from 'react';
-import { motion } from 'framer-motion';
-import { SKILLS } from '@/lib/constants';
-
-interface Particle {
-  id: number;
-  x: number;
-  y: number;
-  size: number;
-  duration: number;
-  delay: number;
-}
-
-interface SparklesCoreProps {
-  particleCount?: number;
-}
-
-interface TextGenerateEffectProps {
-  words: string;
-  className?: string;
-}
+import type React from "react"
+import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
+import { SITE_EMAIL } from "@/lib/constants"
+import Link from "next/link"
+import { ArrowUpRight, Github, Linkedin, Mail, MapPin } from "lucide-react"
+import { RollingLogos } from "@/components/sections/RollingLogos"
+import { BackgroundAnimation } from "@/components/sections/BackGroundAnimation";
 
 interface CounterEffectProps {
-  target: number;
-  suffix?: string;
-}
-
-interface GlowingCardProps {
-  children: React.ReactNode;
-  delay?: number;
+  target: number
+  suffix?: string
+  prefix?: string
 }
 
 interface SkillBadgeProps {
-  skill: string;
-  index: number;
+  skill: string
+  index: number
 }
 
-const SparklesCore: React.FC<SparklesCoreProps> = ({ particleCount = 50 }) => {
-  const particles = useMemo<Particle[]>(() => {
-    let seed = 123456;
-    const seededRandom = () => {
-      const x = Math.sin(seed++) * 10000;
-      return x - Math.floor(x);
-    };
-
-    return Array.from({ length: particleCount }, (_, i) => ({
-      id: i,
-      x: seededRandom() * 100,
-      y: seededRandom() * 100,
-      size: seededRandom() * 2 + 1,
-      duration: seededRandom() * 3 + 2,
-      delay: seededRandom() * 2,
-    }));
-  }, [particleCount]);
-
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {particles.map((particle) => (
-        <motion.div
-          key={particle.id}
-          className="absolute rounded-full"
-          style={{
-            left: `${particle.x}%`,
-            top: `${particle.y}%`,
-            width: particle.size,
-            height: particle.size,
-            background: '#D4AF37',
-            opacity: 0.3,
-          }}
-          animate={{
-            opacity: [0, 0.6, 0],
-            scale: [0, 1, 0],
-          }}
-          transition={{
-            duration: particle.duration,
-            repeat: Infinity,
-            delay: particle.delay,
-          }}
-        />
-      ))}
-    </div>
-  );
-};
-
-const TextGenerateEffect: React.FC<TextGenerateEffectProps> = ({ words, className = '' }) => {
-  const [displayedText, setDisplayedText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
+const CounterEffect: React.FC<CounterEffectProps> = ({ target, suffix = "", prefix = "" }) => {
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
-    if (currentIndex < words.length) {
-      const timeout = setTimeout(() => {
-        setDisplayedText(prev => prev + words[currentIndex]);
-        setCurrentIndex(prev => prev + 1);
-      }, 50);
-      return () => clearTimeout(timeout);
-    }
-  }, [currentIndex, words]);
-
-  return (
-    <span className={className}>
-      {displayedText.split('').map((char, index) => (
-        <motion.span
-          key={index}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: index * 0.02 }}
-        >
-          {char}
-        </motion.span>
-      ))}
-    </span>
-  );
-};
-
-const CounterEffect: React.FC<CounterEffectProps> = ({ target, suffix = '' }) => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    const duration = 2000;
-    const steps = 60;
-    const increment = target / steps;
-    let current = 0;
+    const duration = 2000
+    const steps = 60
+    const increment = target / steps
+    let current = 0
 
     const timer = setInterval(() => {
-      current += increment;
+      current += increment
       if (current >= target) {
-        setCount(target);
-        clearInterval(timer);
+        setCount(target)
+        clearInterval(timer)
       } else {
-        setCount(Math.floor(current));
+        setCount(Math.floor(current))
       }
-    }, duration / steps);
+    }, duration / steps)
 
-    return () => clearInterval(timer);
-  }, [target]);
+    return () => clearInterval(timer)
+  }, [target])
 
-  return <span>{count}{suffix}</span>;
-};
-
-const GlowingCard: React.FC<GlowingCardProps> = ({ children, delay = 0 }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay }}
-      className="rounded-xl p-6" 
-      style={{ 
-        backgroundColor: 'var(--card)'
-      }}>
-      {children}
-    </motion.div>
-  );
-};
+    <span>
+      {prefix}
+      {count}
+      {suffix}
+    </span>
+  )
+}
 
 const SkillBadge: React.FC<SkillBadgeProps> = ({ skill, index }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.3, delay: index * 0.1 }}
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.2, delay: index * 0.02 }}
       whileHover={{ scale: 1.05, y: -2 }}
-      className="flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-300 cursor-pointer"
-      style={{
-        backgroundColor: 'var(--muted)',
-        borderColor: 'var(--border)',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.backgroundColor = 'rgba(0, 32, 91, 0.1)';
-        e.currentTarget.style.borderColor = '#00205B';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor = 'var(--muted)';
-        e.currentTarget.style.borderColor = 'var(--border)';
-      }}
+      className="px-4 py-2 rounded-lg text-sm font-medium bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20 hover:border-accent/40 transition-all duration-200 cursor-default"
     >
-      <motion.span
-        className="w-2 h-2 rounded-full"
-        style={{ backgroundColor: '#00205B' }}
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [1, 0.7, 1],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          delay: index * 0.2,
-        }}
-      />
-      <span className="text-sm font-medium" style={{ color: 'var(--foreground)' }}>{skill}</span>
+      {skill}
     </motion.div>
-  );
-};
+  )
+}
 
 export default function AboutPage() {
-  const tools = ['Git & GitHub', 'VS Code', 'Figma', 'Vercel'];
-
   return (
-    <div className="min-h-screen relative overflow-hidden" style={{ backgroundColor: 'var(--background)' }}>
-      <SparklesCore particleCount={40} />
-      
-      <div className="max-w-6xl mx-auto px-6 py-20">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 text-primary">
-            <TextGenerateEffect 
-              words="About Me"
-            />
-          </h1>
-          <motion.div
-            className="h-1 mx-auto rounded-full bg-gradient-to-r w-24 mt-2 bg-accent"
-            initial={{ width: 0 }}
-            animate={{ 
-              width: [0, 96, 80, 96],
-              scaleX: [1, 1.2, 0.8, 1]
-            }}
-            transition={{ 
-              duration: 2,
-              times: [0, 0.4, 0.7, 1],
-              ease: "easeInOut",
-              repeat: Infinity,
-              repeatDelay: 1
-            }}
-          />
-        </motion.div>
-
-        <div className="gap-8 mb-12">
-          <GlowingCard delay={0.2}>
-            <motion.div
-              className="space-y-6"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-            >
-              <h2 className="text-3xl font-bold text-primary">
-                Hi, I&apos;m <span className='text-accent'>Prathin Sajith</span>
-              </h2>
-              <p className="text-lg leading-relaxed text-base">
-                <TextGenerateEffect words="I am a passionate web developer with expertise in modern web technologies. I love creating beautiful, functional, and user-friendly applications that solve real-world problems." />
-              </p>
-              <p className="text-lg leading-relaxed text-base">
-                <TextGenerateEffect words="My journey in web development started with curiosity about how websites work, 
-                and it has evolved into a passion for creating exceptional digital experiences." />
-              </p>
-              <motion.div
-                className="flex gap-4 pt-4 justify-center"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
-              >
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-6 py-3 rounded-lg font-medium shadow-lg transition-all duration-300 bg-primary text-background"
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.boxShadow = '0 10px 40px rgba(0, 32, 91, 0.5)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)';
-                  }}
-                >
-                  View Projects
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-6 py-3 rounded-lg font-medium shadow-lg transition-all duration-300 bg-accent text-foreground"
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.boxShadow = '0 10px 40px rgba(212, 175, 55, 0.5)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)';
-                  }}
-                >
-                  Contact Me
-                </motion.button>
-              </motion.div>
-            </motion.div>
-          </GlowingCard>
-
-          <GlowingCard delay={0.4}>
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                  <span className='text-primary'>Frontend Development</span>
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {SKILLS.map((skill, index) => (
-                    <SkillBadge key={typeof skill === 'string' ? skill : skill.name} skill={typeof skill === 'string' ? skill : skill.name} index={index} />
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                  <span className='text-accent'>Tools & Platforms</span>
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {tools.map((tool, index) => (
-                    <SkillBadge key={tool} skill={tool} index={index + SKILLS.length} />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </GlowingCard>
-        </div>
-
+    <div className="min-h-screen bg-background relative overflow-hidden mt-[72px]">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 py-20 md:py-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto"
+          transition={{ duration: 0.6 }}
+          className="mb-20"
         >
-          {[
-            { number: 3, suffix: '+', label: 'Years Experience' },
-            { number: 50, suffix: '+', label: 'Projects Completed' },
-          ].map((stat, index) => (
+          <div className="flex items-center gap-3 mb-8">
             <motion.div
-              key={stat.label}
-              whileHover={{ scale: 1.05, y: -5 }}
-            >
-              <div className="rounded-xl p-8 text-center"
-                   style={{
-                     backgroundColor: 'var(--card)'
-                   }}>
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
-                  className="text-4xl font-bold mb-2 text-primary"
-                >
-                  <CounterEffect target={stat.number} suffix={stat.suffix} />
-                </motion.div>
-                <div className="font-medium text-base">{stat.label}</div>
-              </div>
-            </motion.div>
-          ))}
+              className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+            />
+            <span className="text-sm font-medium text-accent uppercase tracking-wider">About</span>
+            <motion.div
+              className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+            />
+          </div>
+
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-foreground leading-tight">Prathin Sajith</h1>
+          <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed max-w-3xl">
+            Full Stack Developer & UI/UX Enthusiast
+          </p>
+          <p className="text-base md:text-lg text-muted-foreground mt-4 leading-relaxed max-w-2xl">
+            I build accessible, pixel-perfect digital experiences for the web.
+          </p>
         </motion.div>
+
+        <div className="grid lg:grid-cols-3 gap-12 lg:gap-16 mb-20">
+          {/* Left sidebar with navigation-style links */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-8"
+          >
+            {/* Quick stats */}
+            <div className="space-y-6">
+              <div className="border-l-2 border-accent pl-4">
+                <div className="text-3xl font-bold text-foreground mb-1">
+                  <CounterEffect target={2024} /> — Present
+                </div>
+                <div className="text-sm text-muted-foreground">Senior Frontend Engineer</div>
+                <div className="text-sm font-medium text-accent mt-1">Company Name</div>
+              </div>
+
+              <div className="space-y-3 text-sm">
+                <div className="flex items-start gap-2">
+                  <MapPin className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+                  <span className="text-muted-foreground">Dubai, UAE</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Mail className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+                  <a
+                    href={`mailto:${SITE_EMAIL}`}
+                    className="text-muted-foreground hover:text-accent transition-colors"
+                  >
+                    {SITE_EMAIL}
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex gap-3 pt-4">
+                <motion.a
+                  href="https://github.com/prathinsajith"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-10 h-10 rounded-lg bg-secondary hover:bg-accent/10 border border-border hover:border-accent/40 flex items-center justify-center text-muted-foreground hover:text-accent transition-all duration-200"
+                >
+                  <Github className="w-5 h-5" />
+                </motion.a>
+                <motion.a
+                  href="https://linkedin.com/in/prathinsajith"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-10 h-10 rounded-lg bg-secondary hover:bg-accent/10 border border-border hover:border-accent/40 flex items-center justify-center text-muted-foreground hover:text-accent transition-all duration-200"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </motion.a>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Main content */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="lg:col-span-2 space-y-8"
+          >
+            <div className="space-y-6 text-base leading-relaxed text-muted-foreground">
+              <p>
+                I'm a developer passionate about crafting accessible, pixel-perfect user interfaces that blend
+                thoughtful design with robust engineering. My favorite work lies at the intersection of design and
+                development, creating experiences that not only look great but are meticulously built for performance
+                and usability.
+              </p>
+
+              <p>
+                Currently, I'm a Senior Front-End Engineer at{" "}
+                <span className="text-accent font-medium">Company Name</span>, specializing in accessibility. I
+                contribute to the creation and maintenance of UI components that power the company's frontend, ensuring
+                our platform meets web accessibility standards and best practices to deliver an inclusive user
+                experience.
+              </p>
+
+              <p>
+                In the past, I've had the opportunity to develop software across a variety of settings — from{" "}
+                <span className="font-medium text-foreground">advertising agencies</span> and{" "}
+                <span className="font-medium text-foreground">large corporations</span> to{" "}
+                <span className="font-medium text-foreground">start-ups</span> and{" "}
+                <span className="font-medium text-foreground">small digital product studios</span>. Additionally, I also
+                released a <span className="font-medium text-foreground">comprehensive video course</span> a few years
+                ago, guiding learners through building a web app with the Spotify API.
+              </p>
+
+              <p>
+                In my spare time, I'm usually climbing, reading, hanging out with my wife and two cats, or running
+                around Hyrule searching for <span className="italic">Korok seeds</span>.
+              </p>
+            </div>
+
+            <div className="pt-8 space-y-6">
+              <div>
+                <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">Technologies</h3>
+                <RollingLogos />
+              </div>
+
+              <div>
+                <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">Tools</h3>
+                <RollingLogos type="tools" />
+              </div>
+            </div>
+
+            <div className="pt-8 flex flex-wrap gap-4">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link
+                  href="/#skills"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-primary/30 transition-all duration-200"
+                >
+                  View Skills
+                  <ArrowUpRight className="w-4 h-4" />
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium border-2 border-accent text-accent hover:bg-accent/10 transition-all duration-200"
+                >
+                  Get in Touch
+                </Link>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </div>
-  );
+  )
 }

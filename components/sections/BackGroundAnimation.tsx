@@ -1,20 +1,20 @@
-"use client";
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+"use client"
+import { motion } from "framer-motion"
+import { useEffect, useState } from "react"
 
 interface Particle {
-  id: number;
-  x: number;
-  y: number;
-  size: number;
-  color: string;
-  duration: number;
-  delay: number;
-  direction: number;
+  id: number
+  x: number
+  y: number
+  size: number
+  color: string
+  duration: number
+  delay: number
+  direction: number
 }
 
 export function BackgroundAnimation() {
-  const [particles, setParticles] = useState<Particle[]>([]);
+  const [particles, setParticles] = useState<Particle[]>([])
 
   useEffect(() => {
     const newParticles = Array.from({ length: 40 }, (_, i) => ({
@@ -26,9 +26,9 @@ export function BackgroundAnimation() {
       duration: Math.random() * 15 + 15,
       delay: Math.random() * 5,
       direction: Math.random() > 0.5 ? 1 : -1,
-    }));
-    setParticles(newParticles);
-  }, []);
+    }))
+    setParticles(newParticles)
+  }, [])
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-[-1]">
@@ -44,7 +44,7 @@ export function BackgroundAnimation() {
           rotate: [0, 15, -10, 0],
           scale: [1, 1.2, 1],
         }}
-        transition={{ duration: 40, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 40, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
         initial={{ top: "5%", left: "5%" }}
       />
 
@@ -59,7 +59,7 @@ export function BackgroundAnimation() {
           rotate: [0, -10, 20, 0],
           scale: [1, 1.15, 1],
         }}
-        transition={{ duration: 50, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 50, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
         initial={{ top: "40%", right: "5%" }}
       />
 
@@ -74,7 +74,7 @@ export function BackgroundAnimation() {
           rotate: [0, 10, -10, 0],
           scale: [1, 1.1, 1],
         }}
-        transition={{ duration: 45, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 45, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
         initial={{ bottom: "5%", left: "25%" }}
       />
 
@@ -99,7 +99,7 @@ export function BackgroundAnimation() {
           }}
           transition={{
             duration: p.duration,
-            repeat: Infinity,
+            repeat: Number.POSITIVE_INFINITY,
             delay: p.delay,
             ease: "easeInOut",
           }}
@@ -121,7 +121,7 @@ export function BackgroundAnimation() {
         }}
         transition={{
           duration: 40,
-          repeat: Infinity,
+          repeat: Number.POSITIVE_INFINITY,
           ease: "linear",
         }}
       />
@@ -130,8 +130,8 @@ export function BackgroundAnimation() {
       <motion.div
         className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent mix-blend-overlay"
         animate={{ opacity: [0.05, 0.15, 0.05] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
       />
     </div>
-  );
+  )
 }

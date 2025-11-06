@@ -1,15 +1,8 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import {
-  Github,
-  Twitter,
-  Facebook,
-  Linkedin,
-  Copyright,
-  Heart,
-} from "lucide-react";
-import { motion } from "framer-motion";
+import Link from "next/link"
+import { Github, Twitter, Facebook, Linkedin, Copyright } from "lucide-react"
+import { motion } from "framer-motion"
 
 export default function Footer() {
   const socialLinks = [
@@ -37,39 +30,33 @@ export default function Footer() {
       url: "https://twitter.com/prathinsajith",
       color: "#0077C8",
     },
-  ];
+  ]
 
   return (
     <footer className="relative bg-background/80 backdrop-blur-md text-foreground border-t border-border overflow-hidden">
       {/* Animated background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
         <motion.div
-          className="absolute -top-24 -right-24 w-48 h-48 rounded-full"
-          style={{
-            background: "radial-gradient(circle, #D4AF37 0%, transparent 70%)",
-          }}
+          className="absolute -top-24 -right-24 w-48 h-48 rounded-full [background:radial-gradient(circle,#D4AF37_0%,transparent_70%)]"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3],
           }}
           transition={{
             duration: 4,
-            repeat: Infinity,
+            repeat: Number.POSITIVE_INFINITY,
             ease: "easeInOut",
           }}
         />
         <motion.div
-          className="absolute -bottom-24 -left-24 w-48 h-48 rounded-full"
-          style={{
-            background: "radial-gradient(circle, #00205B 0%, transparent 70%)",
-          }}
+          className="absolute -bottom-24 -left-24 w-48 h-48 rounded-full [background:radial-gradient(circle,#00205B_0%,transparent_70%)]"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3],
           }}
           transition={{
             duration: 4,
-            repeat: Infinity,
+            repeat: Number.POSITIVE_INFINITY,
             ease: "easeInOut",
             delay: 2,
           }}
@@ -89,25 +76,8 @@ export default function Footer() {
           >
             <div className="text-sm text-muted-foreground flex items-center gap-2">
               <Copyright className="w-4 h-4" />
-              <span>
-                {new Date().getFullYear()} Prathin Sajith. All rights reserved.
-              </span>
+              <span>{new Date().getFullYear()} Prathin Sajith. All rights reserved.</span>
             </div>
-            <motion.div
-              className="text-xs text-muted-foreground flex items-center gap-1"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-            >
-              Made with{" "}
-              <motion.span
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 1, repeat: Infinity }}
-              >
-                <Heart className="w-3 h-3 fill-[#DC2626] text-[#DC2626]" />
-              </motion.span>{" "}
-              in Dubai
-            </motion.div>
           </motion.div>
 
           {/* Right Side - Social Links */}
@@ -126,23 +96,17 @@ export default function Footer() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
               >
-                <Link
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative"
-                >
+                <Link href={link.url} target="_blank" rel="noopener noreferrer" className="group relative">
                   <motion.div
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     className="relative p-3 rounded-full bg-muted/50 text-muted-foreground transition-all duration-300 hover:bg-[#D4AF37]/10"
                   >
                     {/* Glow effect on hover */}
-                    <motion.div
-                      className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    <div
+                      className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-[8px]"
                       style={{
                         background: `radial-gradient(circle, ${link.color}20 0%, transparent 70%)`,
-                        filter: "blur(8px)",
                       }}
                     />
 
@@ -152,9 +116,7 @@ export default function Footer() {
                       whileHover={{ rotate: [0, -10, 10, -10, 0] }}
                       transition={{ duration: 0.5 }}
                     >
-                      <span className="group-hover:text-[#D4AF37] transition-colors duration-300">
-                        {link.icon}
-                      </span>
+                      <span className="group-hover:text-[#D4AF37] transition-colors duration-300">{link.icon}</span>
                     </motion.div>
                   </motion.div>
 
@@ -164,8 +126,7 @@ export default function Footer() {
                     whileHover={{ opacity: 1, y: 0 }}
                     className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-[#00205B] text-white text-xs rounded whitespace-nowrap pointer-events-none"
                   >
-                    {link.platform.charAt(0).toUpperCase() +
-                      link.platform.slice(1)}
+                    {link.platform.charAt(0).toUpperCase() + link.platform.slice(1)}
                   </motion.span>
                 </Link>
               </motion.div>
@@ -179,33 +140,15 @@ export default function Footer() {
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-6 pt-6 border-t border-border"
-          style={{ originX: 0.5 }}
+          className="mt-6 pt-6 border-t border-border origin-center"
         >
           <div className="flex flex-col md:flex-row justify-center items-center gap-4 text-xs text-muted-foreground">
-            <Link
-              href="/privacy"
-              className="hover:text-[#D4AF37] transition-colors duration-200"
-            >
-              Privacy Policy
-            </Link>
-            <span className="hidden md:inline">•</span>
-            <Link
-              href="/terms"
-              className="hover:text-[#D4AF37] transition-colors duration-200"
-            >
-              Terms of Service
-            </Link>
-            <span className="hidden md:inline">•</span>
-            <Link
-              href="/contact"
-              className="hover:text-[#D4AF37] transition-colors duration-200"
-            >
+            <Link href="/contact" className="hover:text-[#D4AF37] transition-colors duration-200">
               Contact
             </Link>
           </div>
         </motion.div>
       </div>
     </footer>
-  );
+  )
 }
