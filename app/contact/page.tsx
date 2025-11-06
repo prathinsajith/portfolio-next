@@ -1,10 +1,20 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Facebook, Twitter, Instagram } from "lucide-react"
-import { SITE_EMAIL } from "@/lib/constants"
+import type React from "react";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Github,
+  Linkedin,
+  Facebook,
+  Twitter,
+  Instagram,
+} from "lucide-react";
+import { SITE_EMAIL } from "@/lib/constants";
 // import { SubtleBackground } from "@/components/sections/SubtleBackground"
 import { BackgroundAnimation } from "@/components/sections/BackGroundAnimation";
 
@@ -14,28 +24,30 @@ export default function ContactPage() {
     email: "",
     subject: "",
     message: "",
-  })
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    await new Promise((resolve) => setTimeout(resolve, 2000));
 
-    alert("Message sent successfully!")
-    setFormData({ name: "", email: "", subject: "", message: "" })
-    setIsSubmitting(false)
-  }
+    alert("Message sent successfully!");
+    setFormData({ name: "", email: "", subject: "", message: "" });
+    setIsSubmitting(false);
+  };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   const contactInfo = [
     {
@@ -55,7 +67,7 @@ export default function ContactPage() {
       title: "Location",
       content: "Dubai, United Arab Emirates",
     },
-  ]
+  ];
 
   const socialLinks = [
     {
@@ -83,7 +95,7 @@ export default function ContactPage() {
       icon: <Twitter className="w-5 h-5" />,
       url: "https://twitter.com/prathinsajith",
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-background mt-[72px]">
@@ -103,7 +115,9 @@ export default function ContactPage() {
               animate={{ scaleX: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
             />
-            <span className="text-sm font-medium text-accent uppercase tracking-wider">Contact</span>
+            <span className="text-sm font-medium text-accent uppercase tracking-wider">
+              Contact
+            </span>
             <motion.div
               className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent"
               initial={{ scaleX: 0 }}
@@ -112,13 +126,15 @@ export default function ContactPage() {
             />
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-foreground leading-tight">Get In Touch</h1>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-foreground leading-tight">
+            Get In Touch
+          </h1>
           <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed max-w-3xl">
             Have a question or want to work together?
           </p>
           <p className="text-base md:text-lg text-muted-foreground mt-4 leading-relaxed max-w-2xl">
-            Feel free to reach out! I'm always open to discussing new projects, creative ideas, or opportunities to be
-            part of your vision.
+            Feel free to reach out! I'm always open to discussing new projects,
+            creative ideas, or opportunities to be part of your vision.
           </p>
         </motion.div>
 
@@ -131,7 +147,9 @@ export default function ContactPage() {
             className="space-y-8"
           >
             <div className="space-y-6">
-              <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">Contact Information</h3>
+              <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">
+                Contact Information
+              </h3>
               {contactInfo.map((info, index) => (
                 <motion.div
                   key={index}
@@ -144,13 +162,20 @@ export default function ContactPage() {
                     {info.icon}
                   </div>
                   <div>
-                    <div className="text-sm font-medium text-foreground mb-1">{info.title}</div>
+                    <div className="text-sm font-medium text-foreground mb-1">
+                      {info.title}
+                    </div>
                     {info.href ? (
-                      <a href={info.href} className="text-sm text-muted-foreground hover:text-accent transition-colors">
+                      <a
+                        href={info.href}
+                        className="text-sm text-muted-foreground hover:text-accent transition-colors"
+                      >
                         {info.content}
                       </a>
                     ) : (
-                      <div className="text-sm text-muted-foreground">{info.content}</div>
+                      <div className="text-sm text-muted-foreground">
+                        {info.content}
+                      </div>
                     )}
                   </div>
                 </motion.div>
@@ -158,7 +183,9 @@ export default function ContactPage() {
             </div>
 
             <div className="pt-4">
-              <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">Follow Me</h3>
+              <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
+                Follow Me
+              </h3>
               <div className="flex gap-3">
                 {socialLinks.map((link, index) => (
                   <motion.a
@@ -191,7 +218,10 @@ export default function ContactPage() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
                     Name
                   </label>
                   <input
@@ -206,7 +236,10 @@ export default function ContactPage() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
                     Email
                   </label>
                   <input
@@ -223,7 +256,10 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="subject"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
                   Subject
                 </label>
                 <input
@@ -239,7 +275,10 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-foreground mb-2"
+                >
                   Message
                 </label>
                 <textarea
@@ -278,5 +317,5 @@ export default function ContactPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

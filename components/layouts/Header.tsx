@@ -1,26 +1,31 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import NavItems from "@/components/layouts/NavItems"
-import { ModeToggle } from "@/components/elements/theme_switch"
-import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover"
-import NavItemsMobile from "./NavItemsMobile"
-import { Menu } from "lucide-react"
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import NavItems from "@/components/layouts/NavItems";
+import { ModeToggle } from "@/components/elements/theme_switch";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
+import NavItemsMobile from "./NavItemsMobile";
+import { Menu } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { FULL_NAME } from "@/lib/constants";
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <motion.header
@@ -35,10 +40,14 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="relative group">
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="relative"
+          >
             <span className="text-2xl md:text-3xl font-bold tracking-tight">
               <span className="bg-gradient-to-r from-[#00205B] via-[#0077C8] to-[#D4AF37] bg-clip-text text-transparent drop-shadow-sm">
-                Prathin Sajith
+                {FULL_NAME}
               </span>
             </span>
             {/* Enhanced underline with glow effect */}
@@ -67,14 +76,24 @@ export default function Header() {
             <Popover open={isOpen} onOpenChange={setIsOpen}>
               <PopoverTrigger asChild>
                 <motion.div whileTap={{ scale: 0.9 }}>
-                  <Button variant="ghost" size="icon" className="relative hover:bg-accent/20 transition-colors">
-                    <motion.div animate={isOpen ? { rotate: 90 } : { rotate: 0 }} transition={{ duration: 0.2 }}>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="relative hover:bg-accent/20 transition-colors"
+                  >
+                    <motion.div
+                      animate={isOpen ? { rotate: 90 } : { rotate: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
                       <Menu className="h-5 w-5 text-foreground" />
                     </motion.div>
                   </Button>
                 </motion.div>
               </PopoverTrigger>
-              <PopoverContent align="end" className="w-64 p-0 mt-2 border-border bg-card/95 backdrop-blur-lg">
+              <PopoverContent
+                align="end"
+                className="w-64 p-0 mt-2 border-border bg-card/95 backdrop-blur-lg"
+              >
                 <NavItemsMobile onClose={() => setIsOpen(false)} />
               </PopoverContent>
             </Popover>
@@ -82,5 +101,5 @@ export default function Header() {
         </div>
       </div>
     </motion.header>
-  )
+  );
 }

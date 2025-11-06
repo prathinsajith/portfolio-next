@@ -1,35 +1,46 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { ArrowRight, Code, Palette, Zap, Github, Linkedin, Mail, ExternalLink, Briefcase, Calendar } from "lucide-react"
-import Link from "next/link"
-import { motion } from "framer-motion"
-import { FULL_NAME, EXPERIENCE, PROJECTS } from "@/lib/constants"
-import { RollingLogos } from "@/components/sections/RollingLogos"
-import Image from "next/image"
-import { TypingAnimation } from "@/components/animations/TypingAnimation"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  ArrowRight,
+  Github,
+  Linkedin,
+  Mail,
+  ExternalLink,
+  Briefcase,
+  Calendar,
+  Twitter,
+  Instagram,
+  Zap,
+  Palette,
+  Code,
+  Facebook,
+} from "lucide-react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { FULL_NAME, EXPERIENCE, PROJECTS, SOCIAL_LINKS } from "@/lib/constants";
+import { RollingLogos } from "@/components/sections/RollingLogos";
+import Image from "next/image";
+import { TypingAnimation } from "@/components/animations/TypingAnimation";
 import { BackgroundAnimation } from "@/components/sections/BackGroundAnimation";
 
-export default function Home() {
-  const features = [
-    {
-      icon: <Code className="w-8 h-8" />,
-      title: "Clean Code",
-      description: "Writing maintainable and scalable code following best practices",
-    },
-    {
-      icon: <Palette className="w-8 h-8" />,
-      title: "Modern Design",
-      description: "Creating beautiful, responsive interfaces with attention to detail",
-    },
-    {
-      icon: <Zap className="w-8 h-8" />,
-      title: "Performance",
-      description: "Optimizing applications for speed and excellent user experience",
-    },
-  ]
+const getIcon = (iconName: string) => {
+  const icons: Record<string, any> = {
+    Github,
+    Linkedin,
+    Twitter,
+    Instagram,
+    Mail,
+    Zap,
+    Palette,
+    Facebook,
+    Code,
+  };
+  return icons[iconName] || Github;
+};
 
+export default function Home() {
   return (
     <div className="min-h-screen bg-background mt-[72px]">
       <BackgroundAnimation />
@@ -43,59 +54,43 @@ export default function Home() {
           className="mb-12"
         >
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-foreground leading-tight">
-            Hi, I'm <TypingAnimation text={FULL_NAME} className="text-accent" delay={0.3} speed={0.05} />
+            Hi, I'm{" "}
+            <TypingAnimation
+              text={FULL_NAME}
+              className="text-accent"
+              delay={0.3}
+              speed={0.05}
+            />
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground font-light leading-relaxed max-w-3xl">
             Full Stack Developer & UI/UX Enthusiast
           </p>
           <p className="text-base md:text-lg text-muted-foreground mt-3 leading-relaxed max-w-2xl">
-            I craft exceptional digital experiences through modern web technologies, turning ideas into beautiful,
-            functional applications.
+            I craft exceptional digital experiences through modern web
+            technologies, turning ideas into beautiful, functional applications.
           </p>
 
-          <div className="flex flex-wrap gap-4 mt-6">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                size="lg"
-                asChild
-                className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-primary/30 transition-all duration-200"
-              >
-                <Link href="/#skills">
-                  View My Work
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
-              </Button>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                variant="outline"
-                size="lg"
-                asChild
-                className="border-2 border-accent text-accent hover:bg-accent/10 transition-all duration-200 bg-transparent"
-              >
-                <Link href="/contact">Get In Touch</Link>
-              </Button>
-            </motion.div>
-          </div>
-
           <div className="flex gap-3 mt-5">
-            {[
-              { icon: Github, href: "https://github.com/prathinsajith" },
-              { icon: Linkedin, href: "https://linkedin.com/in/prathinsajith" },
-              { icon: Mail, href: "/contact" },
-            ].map((social, i) => (
-              <motion.a
-                key={i}
-                href={social.href}
-                target={social.href.startsWith("http") ? "_blank" : undefined}
-                rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-10 h-10 rounded-lg bg-secondary hover:bg-accent/10 border border-border hover:border-accent/40 flex items-center justify-center text-muted-foreground hover:text-accent transition-all duration-200"
-              >
-                <social.icon className="w-5 h-5" />
-              </motion.a>
-            ))}
+            {SOCIAL_LINKS.map((social, i) => {
+              const Icon = getIcon(social.icon);
+              return (
+                <motion.a
+                  key={i}
+                  href={social.url}
+                  target={social.url.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    social.url.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-10 h-10 rounded-lg bg-secondary hover:bg-accent/10 border border-border hover:border-accent/40 flex items-center justify-center text-muted-foreground hover:text-accent transition-all duration-200"
+                >
+                  <Icon className="w-5 h-5" />
+                </motion.a>
+              );
+            })}
           </div>
         </motion.div>
       </section>
@@ -110,45 +105,16 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <h2 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">Technologies</h2>
+            <h2 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
+              Technologies
+            </h2>
             <RollingLogos />
-          </motion.div>
-
-          {/* Features */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-10"
-          >
-            <h2 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-8">What I Do</h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  whileHover={{ y: -4 }}
-                >
-                  <Card className="h-full border-border hover:border-accent/40 transition-all duration-200 bg-card/50">
-                    <CardContent className="p-6">
-                      <div className="text-accent mb-4">{feature.icon}</div>
-                      <h3 className="text-lg font-semibold mb-2 text-foreground">{feature.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Experience Section */}
-      <section className="py-12 px-6 bg-secondary/30">
+      <section className="py-12 px-6 bg-secondary/30" id="experience">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -157,8 +123,12 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="mb-10 text-center"
           >
-            <h2 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-2">Experience</h2>
-            <p className="text-2xl md:text-3xl font-bold text-foreground">Professional Journey</p>
+            <h2 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-2">
+              Experience
+            </h2>
+            <p className="text-2xl md:text-3xl font-bold text-foreground">
+              Professional Journey
+            </p>
           </motion.div>
 
           <div className="relative">
@@ -192,7 +162,11 @@ export default function Home() {
                   </div>
 
                   {/* Content card */}
-                  <div className={`flex-1 ml-20 md:ml-0 ${index % 2 === 0 ? "md:pr-12" : "md:pl-12"}`}>
+                  <div
+                    className={`flex-1 ml-20 md:ml-0 ${
+                      index % 2 === 0 ? "md:pr-12" : "md:pl-12"
+                    }`}
+                  >
                     <Card className="border-border hover:border-accent/40 transition-all duration-300 bg-card/90 backdrop-blur-sm shadow-lg hover:shadow-xl hover:shadow-accent/10 group">
                       <CardContent className="p-5">
                         {/* Period badge */}
@@ -207,7 +181,9 @@ export default function Home() {
                         </h3>
                         <div className="flex items-center gap-2 text-muted-foreground mb-3">
                           <Briefcase className="w-4 h-4 text-accent" />
-                          <span className="font-semibold text-base">{exp.company}</span>
+                          <span className="font-semibold text-base">
+                            {exp.company}
+                          </span>
                         </div>
 
                         {/* Description */}
@@ -223,7 +199,10 @@ export default function Home() {
                               initial={{ opacity: 0, scale: 0.8 }}
                               whileInView={{ opacity: 1, scale: 1 }}
                               viewport={{ once: true }}
-                              transition={{ duration: 0.3, delay: index * 0.2 + 0.4 + i * 0.05 }}
+                              transition={{
+                                duration: 0.3,
+                                delay: index * 0.2 + 0.4 + i * 0.05,
+                              }}
                               whileHover={{ scale: 1.05 }}
                               className="px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20 hover:border-primary/40 transition-all duration-200"
                             >
@@ -245,7 +224,7 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section className="py-12 px-6">
+      <section className="py-12 px-6" id="projects">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -254,8 +233,12 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <h2 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-2">Projects</h2>
-            <p className="text-2xl md:text-3xl font-bold text-foreground">Featured Work</p>
+            <h2 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-2">
+              Projects
+            </h2>
+            <p className="text-2xl md:text-3xl font-bold text-foreground">
+              Featured Work
+            </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -278,8 +261,12 @@ export default function Home() {
                     />
                   </div>
                   <CardContent className="p-5">
-                    <h3 className="text-xl font-semibold text-foreground mb-2">{project.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-3">{project.description}</p>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                      {project.description}
+                    </p>
                     <div className="flex flex-wrap gap-2 mb-3">
                       {project.technologies.map((tech, i) => (
                         <span
@@ -297,7 +284,11 @@ export default function Home() {
                         asChild
                         className="border-accent/40 text-accent hover:bg-accent/10 bg-transparent"
                       >
-                        <a href={project.link} target="_blank" rel="noopener noreferrer">
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <ExternalLink className="w-4 h-4 mr-2" />
                           View
                         </a>
@@ -308,7 +299,11 @@ export default function Home() {
                         asChild
                         className="border-border hover:border-accent/40 bg-transparent"
                       >
-                        <a href={project.github} target="_blank" rel="noopener noreferrer">
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <Github className="w-4 h-4 mr-2" />
                           Code
                         </a>
@@ -333,14 +328,19 @@ export default function Home() {
             className="text-center space-y-6"
           >
             <h2 className="text-3xl md:text-5xl font-bold text-foreground">
-              Ready to bring your <span className="text-accent">ideas to life?</span>
+              Ready to bring your{" "}
+              <span className="text-accent">ideas to life?</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Let's work together to create something amazing. I'm always excited to take on new challenges and
-              collaborate on innovative projects.
+              Let's work together to create something amazing. I'm always
+              excited to take on new challenges and collaborate on innovative
+              projects.
             </p>
             <div className="flex flex-wrap gap-4 justify-center pt-2">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <Button
                   size="lg"
                   asChild
@@ -349,7 +349,10 @@ export default function Home() {
                   <Link href="/contact">Start a Project</Link>
                 </Button>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <Button
                   variant="outline"
                   size="lg"
@@ -364,5 +367,5 @@ export default function Home() {
         </div>
       </section>
     </div>
-  )
+  );
 }

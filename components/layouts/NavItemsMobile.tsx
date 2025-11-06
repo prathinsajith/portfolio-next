@@ -1,21 +1,21 @@
-"use client"
-import type React from "react"
-import { NAV_ITEMS } from "@/lib/constants"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { motion } from "framer-motion"
+"use client";
+import type React from "react";
+import { NAV_ITEMS } from "@/lib/constants";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 interface NavItemsMobileProps {
-  onClose?: () => void
+  onClose?: () => void;
 }
 
 const NavItemsMobile: React.FC<NavItemsMobileProps> = ({ onClose }) => {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
     <nav className="flex flex-col py-2 overflow-hidden">
       {NAV_ITEMS.map((item, index) => {
-        const isActive = pathname === item.href
+        const isActive = pathname === item.href;
 
         return (
           <motion.div
@@ -24,7 +24,11 @@ const NavItemsMobile: React.FC<NavItemsMobileProps> = ({ onClose }) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3, delay: index * 0.1 }}
           >
-            <Link href={item.href} onClick={onClose} className="relative block overflow-hidden">
+            <Link
+              href={item.href}
+              onClick={onClose}
+              className="relative block overflow-hidden"
+            >
               <motion.div
                 whileHover={{ x: 5 }}
                 whileTap={{ scale: 0.98 }}
@@ -63,10 +67,10 @@ const NavItemsMobile: React.FC<NavItemsMobileProps> = ({ onClose }) => {
               </motion.div>
             </Link>
           </motion.div>
-        )
+        );
       })}
     </nav>
-  )
-}
+  );
+};
 
-export default NavItemsMobile
+export default NavItemsMobile;

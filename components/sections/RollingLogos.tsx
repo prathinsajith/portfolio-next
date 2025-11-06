@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Image from "next/image"
-import { SKILLS, TOOLS } from "@/lib/constants"
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { SKILLS, TOOLS } from "@/lib/constants";
 
 interface RollingLogosProps {
-  type?: "skills" | "tools"
+  type?: "skills" | "tools";
 }
 
 export function RollingLogos({ type = "skills" }: RollingLogosProps) {
-  const items = type === "tools" ? TOOLS : SKILLS
+  const items = type === "tools" ? TOOLS : SKILLS;
 
   // Duplicate the array for seamless loop
-  const duplicatedItems = [...items, ...items]
+  const duplicatedItems = [...items, ...items];
 
   return (
     <div className="w-full overflow-hidden py-8">
@@ -53,5 +53,5 @@ export function RollingLogos({ type = "skills" }: RollingLogosProps) {
         </motion.div>
       </div>
     </div>
-  )
+  );
 }
