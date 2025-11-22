@@ -5,73 +5,73 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0f172a;
+  --foreground: #12284c;
   --card: #ffffff;
-  --card-foreground: #0f172a;
+  --card-foreground: #12284c;
   --popover: #ffffff;
-  --popover-foreground: #0f172a;
-  --primary: #00205b;
+  --popover-foreground: #12284c;
+  --primary: #12284c;
   --primary-foreground: #ffffff;
-  --secondary: #f1f5f9;
-  --secondary-foreground: #0f172a;
+  --secondary: #e5e4e2;
+  --secondary-foreground: #12284c;
   --muted: #f1f5f9;
   --muted-foreground: #64748b;
-  --accent: #d4af37;
-  --accent-foreground: #0f172a;
-  --destructive: #dc2626;
-  --destructive-foreground: #dc2626;
+  --accent: #ffc62c;
+  --accent-foreground: #12284c;
+  --destructive: #bd2426;
+  --destructive-foreground: #ffffff;
   --border: #e2e8f0;
   --input: #e2e8f0;
-  --ring: #d4af37;
-  --chart-1: #00205b;
-  --chart-2: #0077c8;
-  --chart-3: #d4af37;
-  --chart-4: #64748b;
-  --chart-5: #0f172a;
+  --ring: #ffc62c;
+  --chart-1: #12284c;
+  --chart-2: #00ffff;
+  --chart-3: #ffc62c;
+  --chart-4: #bd2426;
+  --chart-5: #e5e4e2;
   --radius: 0.625rem;
   --sidebar: #ffffff;
-  --sidebar-foreground: #0f172a;
-  --sidebar-primary: #00205b;
+  --sidebar-foreground: #12284c;
+  --sidebar-primary: #12284c;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #f1f5f9;
-  --sidebar-accent-foreground: #0f172a;
+  --sidebar-accent-foreground: #12284c;
   --sidebar-border: #e2e8f0;
-  --sidebar-ring: #d4af37;
+  --sidebar-ring: #ffc62c;
 }
 
 .dark {
-  --background: #0a0f1e;
-  --foreground: #f1f5f9;
-  --card: #1e293b;
-  --card-foreground: #f1f5f9;
-  --popover: #1e293b;
-  --popover-foreground: #f1f5f9;
-  --primary: #0077c8;
-  --primary-foreground: #ffffff;
-  --secondary: #334155;
-  --secondary-foreground: #f1f5f9;
-  --muted: #334155;
+  --background: #050c19;
+  --foreground: #e5e4e2;
+  --card: #0b182d;
+  --card-foreground: #e5e4e2;
+  --popover: #0b182d;
+  --popover-foreground: #e5e4e2;
+  --primary: #00ffff;
+  --primary-foreground: #12284c;
+  --secondary: #1e293b;
+  --secondary-foreground: #e5e4e2;
+  --muted: #1e293b;
   --muted-foreground: #94a3b8;
-  --accent: #fbbf24;
-  --accent-foreground: #0a0f1e;
-  --destructive: #ef4444;
-  --destructive-foreground: #ef4444;
-  --border: #334155;
-  --input: #334155;
-  --ring: #fbbf24;
-  --chart-1: #3b82f6;
-  --chart-2: #60a5fa;
-  --chart-3: #fbbf24;
-  --chart-4: #94a3b8;
-  --chart-5: #f1f5f9;
-  --sidebar: #1e293b;
-  --sidebar-foreground: #f1f5f9;
-  --sidebar-primary: #0077c8;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #334155;
-  --sidebar-accent-foreground: #0a0f1e;
-  --sidebar-border: #334155;
-  --sidebar-ring: #fbbf24;
+  --accent: #bd2426;
+  --accent-foreground: #ffffff;
+  --destructive: #bd2426;
+  --destructive-foreground: #ffffff;
+  --border: #1e293b;
+  --input: #1e293b;
+  --ring: #bd2426;
+  --chart-1: #00ffff;
+  --chart-2: #12284c;
+  --chart-3: #ffc62c;
+  --chart-4: #bd2426;
+  --chart-5: #e5e4e2;
+  --sidebar: #0b182d;
+  --sidebar-foreground: #e5e4e2;
+  --sidebar-primary: #00ffff;
+  --sidebar-primary-foreground: #12284c;
+  --sidebar-accent: #1e293b;
+  --sidebar-accent-foreground: #e5e4e2;
+  --sidebar-border: #1e293b;
+  --sidebar-ring: #bd2426;
 }
 
 @theme inline {
@@ -143,19 +143,72 @@ main {
 }
 
 /* Adding custom scrollbar styling for better aesthetics */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent);
-  border-radius: 5px;
+  background: var(--muted-foreground);
+  border-radius: 10px;
+  opacity: 0.5;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
+  background: var(--accent);
+}
+
+/* Dot Grid Pattern */
+.bg-dot-thick-neutral-300 {
+  background-image: radial-gradient(#d4d4d4 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.dark .bg-dot-thick-neutral-800 {
+  background-image: radial-gradient(#262626 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Meteor Animation */
+@keyframes meteor {
+  0% {
+    transform: rotate(215deg) translateX(0);
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotate(215deg) translateX(-500px);
+    opacity: 0;
+  }
+}
+
+.animate-meteor {
+  animation: meteor 5s linear infinite;
+}
+
+/* Gradient Animation */
+@keyframes gradient-x {
+
+  0%,
+  100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 3s ease infinite;
 }

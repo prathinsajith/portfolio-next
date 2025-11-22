@@ -27,6 +27,7 @@ export function RollingLogos({ type = "skills" }: RollingLogosProps) {
           animate={{
             x: [0, -50 * items.length],
           }}
+          style={{ willChange: "transform" }}
           transition={{
             x: {
               repeat: Number.POSITIVE_INFINITY,

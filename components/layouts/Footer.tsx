@@ -1,137 +1,127 @@
 "use client";
 
 import Link from "next/link";
-import { Github, Twitter, Facebook, Linkedin, Copyright } from "lucide-react";
+import {
+  Copyright,
+  Mail,
+  MapPin,
+  Phone,
+} from "lucide-react";
+import { SOCIAL_LINKS, NAV_ITEMS, SITE_EMAIL, SITE_AUTHOR, FULL_NAME, SITE_PHONE } from "@/lib/constants";
+import { getSocialIcon } from "@/lib/icon-helper";
 import { motion } from "framer-motion";
 
 export default function Footer() {
-  const socialLinks = [
-    {
-      platform: "github",
-      icon: <Github className="w-5 h-5" />,
-      url: "https://github.com/prathinsajith",
-      color: "#00205B",
-    },
-    {
-      platform: "linkedin",
-      icon: <Linkedin className="w-5 h-5" />,
-      url: "https://linkedin.com/in/prathinsajith",
-      color: "#0077C8",
-    },
-    {
-      platform: "facebook",
-      icon: <Facebook className="w-5 h-5" />,
-      url: "https://facebook.com/prathinsajith",
-      color: "#00205B",
-    },
-    {
-      platform: "twitter",
-      icon: <Twitter className="w-5 h-5" />,
-      url: "https://twitter.com/prathinsajith",
-      color: "#0077C8",
-    },
-  ];
 
   return (
     <footer className="relative bg-background/80 backdrop-blur-md text-foreground border-t border-border overflow-hidden">
-      <div className="relative max-w-7xl mx-auto px-6 py-8">
-        {/* Main Footer Content */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          {/* Left Side - Copyright */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-col items-center md:items-start gap-2"
-          >
-            <div className="text-sm text-muted-foreground flex items-center gap-2">
-              <Copyright className="w-4 h-4" />
-              <span>
-                {new Date().getFullYear()} Prathin Sajith. All rights reserved.
-              </span>
-            </div>
-          </motion.div>
+      <div className="relative max-w-7xl mx-auto px-6 py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          {/* Column 1: Brand */}
+          <div className="space-y-4">
+            <Link href="/" className="text-2xl font-bold text-foreground">
+              {FULL_NAME}<span className="text-primary">.</span>
+            </Link>
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
+              Crafting exceptional digital experiences with a focus on
+              accessibility, performance, and modern design.
+            </p>
+          </div>
 
-          {/* Right Side - Social Links */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center gap-3"
-          >
-            {socialLinks.map((link, index) => (
-              <motion.div
-                key={link.platform}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-              >
-                <Link
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative"
+          {/* Column 2: Quick Links */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">
+              Quick Links
+            </h3>
+            <ul className="space-y-2">
+              {NAV_ITEMS.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-muted-foreground hover:text-accent transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Contact */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">
+              Contact
+            </h3>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3 text-sm text-muted-foreground">
+                <Mail className="w-4 h-4 mt-0.5 text-accent" />
+                <a
+                  href={`mailto:${SITE_EMAIL}`}
+                  className="hover:text-accent transition-colors break-all"
                 >
-                  <motion.div
+                  {SITE_EMAIL}
+                </a>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-muted-foreground">
+                <Phone className="w-4 h-4 mt-0.5 text-accent" />
+                <a
+                  href={`tel:${SITE_PHONE}`}
+                  className="hover:text-accent transition-colors"
+                >
+                  {SITE_PHONE}
+                </a>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-muted-foreground">
+                <MapPin className="w-4 h-4 mt-0.5 text-accent" />
+                <span>Dubai, United Arab Emirates</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 4: Social */}
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">
+              Follow Me
+            </h3>
+            <div className="flex gap-3 flex-wrap">
+              {SOCIAL_LINKS.map((link, index) => {
+                const Icon = getSocialIcon(link.icon);
+                return (
+                  <motion.a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    className="relative p-3 rounded-full bg-muted/50 text-muted-foreground transition-all duration-300 hover:bg-[#D4AF37]/10"
+                    className="w-10 h-10 rounded-lg bg-secondary hover:bg-accent/10 border border-border hover:border-accent/40 flex items-center justify-center text-muted-foreground hover:text-accent transition-all duration-200"
+                    aria-label={link.name}
                   >
-                    {/* Glow effect on hover */}
-                    <div
-                      className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-[8px]"
-                      style={{
-                        background: `radial-gradient(circle, ${link.color}20 0%, transparent 70%)`,
-                      }}
-                    />
-
-                    {/* Icon */}
-                    <motion.div
-                      className="relative"
-                      whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <span className="group-hover:text-[#D4AF37] transition-colors duration-300">
-                        {link.icon}
-                      </span>
-                    </motion.div>
-                  </motion.div>
-
-                  {/* Tooltip */}
-                  <motion.span
-                    initial={{ opacity: 0, y: 10 }}
-                    whileHover={{ opacity: 1, y: 0 }}
-                    className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-[#00205B] text-white text-xs rounded whitespace-nowrap pointer-events-none"
-                  >
-                    {link.platform.charAt(0).toUpperCase() +
-                      link.platform.slice(1)}
-                  </motion.span>
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
+                    <Icon className="w-5 h-5" />
+                  </motion.a>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
-        {/* Bottom Divider with Animation */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-6 pt-6 border-t border-border origin-center"
-        >
-          <div className="flex flex-col md:flex-row justify-center items-center gap-4 text-xs text-muted-foreground">
-            <Link
-              href="/contact"
-              className="hover:text-[#D4AF37] transition-colors duration-200"
-            >
-              Contact
+        {/* Bottom Bar */}
+        <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="text-sm text-muted-foreground flex items-center gap-2">
+            <Copyright className="w-4 h-4" />
+            <span>
+              {new Date().getFullYear()} {SITE_AUTHOR}. All rights reserved.
+            </span>
+          </div>
+          <div className="flex gap-6 text-sm text-muted-foreground">
+            <Link href="#" className="hover:text-accent transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="#" className="hover:text-accent transition-colors">
+              Terms of Service
             </Link>
           </div>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );

@@ -1,7 +1,7 @@
 export const NAV_ITEMS = [
   { href: "/", label: "Home" },
   { href: "/#experience", label: "Experience" },
-  { href: "/#projects", label: "Projects" },
+  { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -9,31 +9,31 @@ export const NAV_ITEMS = [
 export const SKILLS = [
   {
     name: "Symfony",
-    level: "Intermediate",
+    level: "Advanced",
     image:
       "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/symfony/symfony-original-wordmark.svg",
     color: "#000000",
   },
   {
     name: "PHP",
-    level: "Intermediate",
+    level: "Advanced",
     image:
       "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg",
     color: "#777BB4",
   },
   {
     name: "Laravel",
-    level: "Intermediate",
+    level: "Advanced",
     image:
       "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original-wordmark.svg",
     color: "#FF2D20",
   },
   {
-    name: "Next.js",
+    name: "CodeIgniter",
     level: "Advanced",
     image:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original-wordmark.svg",
-    color: "#000000",
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/codeigniter/codeigniter-plain-wordmark.svg",
+    color: "#EF4223",
   },
   {
     name: "MySQL",
@@ -50,39 +50,39 @@ export const SKILLS = [
     color: "#F7DF1E",
   },
   {
-    name: "PostgreSQL",
+    name: "Docker",
     level: "Intermediate",
     image:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg",
-    color: "#336791",
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
+    color: "#2496ED",
+  },
+  {
+    name: "AWS",
+    level: "Intermediate",
+    image:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+    color: "#FF9900",
   },
   {
     name: "React",
-    level: "Advanced",
+    level: "Intermediate",
     image:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg",
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
     color: "#61DAFB",
+  },
+  {
+    name: "Next.js",
+    level: "Intermediate",
+    image:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
+    color: "#000000",
   },
   {
     name: "TypeScript",
     level: "Intermediate",
     image:
       "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
-    color: "#3178C6",
-  },
-  {
-    name: "Tailwind CSS",
-    level: "Advanced",
-    image:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-plain-wordmark.svg",
-    color: "#06B6D4",
-  },
-  {
-    name: "CodeIgniter",
-    level: "Intermediate",
-    image:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/codeigniter/codeigniter-plain-wordmark.svg",
-    color: "#EF4223",
+    color: "#007ACC",
   },
 ];
 
@@ -91,7 +91,7 @@ export const TOOLS = [
     name: "Git",
     image:
       "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
-    color: "#F05032",
+    color: "#F05033",
   },
   {
     name: "GitHub",
@@ -100,16 +100,34 @@ export const TOOLS = [
     color: "#181717",
   },
   {
+    name: "GitLab",
+    image:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gitlab/gitlab-original.svg",
+    color: "#FC6D26",
+  },
+  {
     name: "VS Code",
     image:
       "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg",
     color: "#007ACC",
   },
   {
-    name: "Figma",
+    name: "Postman",
     image:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg",
-    color: "#F24E1E",
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg",
+    color: "#FF6C37",
+  },
+  {
+    name: "AWS",
+    image:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+    color: "#FF9900",
+  },
+  {
+    name: "Jenkins",
+    image:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg",
+    color: "#D24939",
   },
   {
     name: "Vercel",
@@ -123,75 +141,69 @@ export const TOOLS = [
       "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
     color: "#2496ED",
   },
-  {
-    name: "Postman",
-    image:
-      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg",
-    color: "#FF6C37",
-  },
 ];
 
 export const EXPERIENCE = [
   {
-    title: "Senior Full Stack Developer",
-    company: "Tech Solutions Inc.",
-    period: "2022 - Present",
+    title: "Senior Software Engineer",
+    company: "Lean Transition Solutions",
+    period: "Apr 2021 - Present",
     description:
-      "Leading development of enterprise web applications using Next.js, React, and Node.js. Architecting scalable solutions and mentoring junior developers.",
-    technologies: ["Next.js", "React", "TypeScript", "PostgreSQL", "AWS"],
+      "Building powerful business management systems that help companies track their goals, manage production schedules, and handle recruitment. Creating web applications that process data in real-time and help businesses make better decisions.",
+    technologies: ["PHP", "Symfony", "MySQL", "Docker", "AWS", "REST API"],
   },
   {
-    title: "Full Stack Developer",
-    company: "Digital Innovations Ltd.",
-    period: "2020 - 2022",
+    title: "Junior Software Developer",
+    company: "Voyo Technologies India Pvt Ltd",
+    period: "Aug 2020 - Apr 2021",
     description:
-      "Developed and maintained multiple client projects using modern web technologies. Collaborated with design teams to create responsive user interfaces.",
-    technologies: ["React", "Laravel", "MySQL", "Tailwind CSS"],
+      "Built a complete business management system that helps multiple companies run their daily operations smoothly. Created easy-to-use interfaces that connect different departments and make work more efficient.",
+    technologies: ["PHP", "Laravel", "MySQL", "HTML", "CSS"],
   },
   {
     title: "Web Developer",
-    company: "Creative Agency",
-    period: "2018 - 2020",
+    company: "Cyberia Software India Pvt Ltd",
+    period: "Aug 2019 - Aug 2020",
     description:
-      "Built custom websites and web applications for various clients. Focused on creating performant and accessible user experiences.",
-    technologies: ["JavaScript", "PHP", "WordPress", "CSS"],
+      "Created an online learning platform for students preparing for defense exams. Built features for watching video lessons, taking practice tests, and secure online payments to make learning easier and more accessible.",
+    technologies: ["PHP", "CodeIgniter", "MySQL", "HTML", "CSS", "jQuery"],
   },
 ];
 
 export const PROJECTS = [
   {
-    title: "E-Commerce Platform",
+    title: "Business Goals Tracking System",
     description:
-      "A full-featured e-commerce platform with product management, shopping cart, payment integration, and order tracking.",
+      "A dashboard that helps companies set and track their business goals in real-time. Shows progress with charts and graphs, making it easy for teams to see how they're doing and plan their next steps.",
     image: "/modern-ecommerce-dashboard.png",
-    technologies: ["Next.js", "Stripe", "PostgreSQL", "Tailwind CSS"],
+    technologies: ["PHP", "Symfony", "MySQL", "Docker", "REST API"],
     link: "#",
     github: "#",
   },
   {
-    title: "Task Management App",
+    title: "Production Scheduling System",
     description:
-      "Collaborative task management application with real-time updates, team workspaces, and project tracking features.",
+      "A visual planning tool for factories that lets managers drag and drop tasks to schedule production. Helps organize work shifts, assign machines, and track everything in real-time for better efficiency.",
     image: "/task-management-interface.png",
-    technologies: ["React", "Node.js", "MongoDB", "Socket.io"],
+    technologies: ["PHP", "Symfony", "MySQL", "JavaScript", "FullCalendar.js"],
     link: "#",
     github: "#",
   },
   {
-    title: "Portfolio CMS",
+    title: "Job Search & Recruitment Platform",
     description:
-      "Content management system for creative professionals to showcase their work with customizable themes and layouts.",
+      "A complete job portal where companies can post jobs and find candidates. Job seekers get personalized job suggestions, alerts for new opportunities, and insights into job market trends.",
     image: "/portfolio-cms-dashboard.jpg",
-    technologies: ["Laravel", "Vue.js", "MySQL", "Bootstrap"],
+    technologies: ["PHP", "Symfony", "MySQL", "JWT", "REST API"],
     link: "#",
     github: "#",
   },
   {
-    title: "Analytics Dashboard",
+    title: "Online Exam Preparation Platform",
     description:
-      "Real-time analytics dashboard with data visualization, custom reports, and performance metrics tracking.",
+      "An e-learning website for students preparing for defense exams. Students can watch video lessons, read study materials, take practice tests, and track their progress - all in one place.",
     image: "/analytics-dashboard-charts.png",
-    technologies: ["React", "TypeScript", "Chart.js", "Express"],
+    technologies: ["PHP", "CodeIgniter", "MySQL", "HTML", "CSS"],
     link: "#",
     github: "#",
   },
@@ -199,24 +211,16 @@ export const PROJECTS = [
 
 export const EDUCATION = [
   {
-    degree: "Bachelor of Science in Computer Science",
-    institution: "University of Technology",
-    period: "2014 - 2018",
+    degree: "Bachelor of Engineering in Computer Science",
+    institution: "College of Engineering Karunagappally",
+    period: "2015 - 2019",
     description:
-      "Focused on software engineering, data structures, algorithms, and web development. Graduated with honors.",
+      "Graduated from APJ Abdul Kalam Technological University with focus on software engineering and web development. Active participant in IEDC and NSS activities.",
     achievements: [
-      "Dean's List",
-      "Best Final Year Project Award",
-      "GPA: 3.8/4.0",
+      "Student Coordinator - IEDC",
+      "NSS Volunteer",
+      "Attended AR/VR/MR Workshop by Future Technologies",
     ],
-  },
-  {
-    degree: "Full Stack Web Development Bootcamp",
-    institution: "Tech Academy",
-    period: "2018",
-    description:
-      "Intensive 12-week program covering modern web development technologies including React, Node.js, and databases.",
-    achievements: ["Top 5% of cohort", "Built 10+ production-ready projects"],
   },
 ];
 
@@ -246,29 +250,30 @@ export const SOCIAL_LINKS = [
 export const FEATURES = [
   {
     icon: "Code",
-    title: "Clean Code",
+    title: "Backend Development",
     description:
-      "Writing maintainable and scalable code following best practices",
+      "Building the behind-the-scenes systems that power websites and applications, making sure everything runs smoothly and securely",
   },
   {
     icon: "Palette",
-    title: "Modern Design",
+    title: "Complete Web Solutions",
     description:
-      "Creating beautiful, responsive interfaces with attention to detail",
+      "Creating entire web applications from start to finish - from database setup to the interface you see and interact with",
   },
   {
     icon: "Zap",
-    title: "Performance",
+    title: "Fast & Efficient",
     description:
-      "Optimizing applications for speed and excellent user experience",
+      "Making applications load quickly and work smoothly, so users have the best possible experience",
   },
 ];
 
-export const SITE_NAME = "Prathin S Portfolio";
+export const SITE_NAME = "Prathin Sajith - Senior Software Engineer";
 export const FULL_NAME = "Prathin Sajith";
 export const SITE_URL = "https://prathinsajith.dev";
 export const SITE_AUTHOR = "Prathin Sajith";
 export const SITE_EMAIL = "sprathin007@gmail.com";
-export const SITE_PHONE = "+971 56 4582402";
+export const SITE_PHONE = "+971 564582402";
+export const SITE_LOCATION = "Dubai, UAE";
 export const SITE_DESCRIPTION =
-  "Welcome to my personal portfolio website where I showcase my projects, skills, and experiences in web development.";
+  "Senior Software Engineer with 5+ years of expertise in backend and full-stack development using PHP frameworks (Symfony, Laravel, CodeIgniter), MySQL, and modern web technologies.";

@@ -18,12 +18,15 @@ const NavItems = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.1 }}
           >
-            <Link href={item.href} className="relative px-4 py-2 group block">
+            <Link 
+              href={item.href} 
+              className="relative px-4 py-2 group block rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ring-offset-background"
+            >
               <span
-                className={`text-sm font-semibold transition-all duration-300 relative z-10 ${
+                className={`text-sm font-medium tracking-wide transition-all duration-300 relative z-10 ${
                   isActive
                     ? "text-accent"
-                    : "text-foreground/80 group-hover:text-primary dark:group-hover:text-accent"
+                    : "text-foreground/80 group-hover:text-accent"
                 }`}
               >
                 {item.label}
@@ -33,7 +36,7 @@ const NavItems = () => {
                 className={`absolute bottom-1 left-4 right-4 h-0.5 rounded-full ${
                   isActive
                     ? "bg-accent shadow-[0_0_8px_rgba(212,175,55,0.6)]"
-                    : "bg-primary dark:bg-accent"
+                    : "bg-accent"
                 }`}
                 initial={{ scaleX: isActive ? 1 : 0 }}
                 animate={{ scaleX: isActive ? 1 : 0 }}
@@ -42,7 +45,7 @@ const NavItems = () => {
               />
 
               <motion.span
-                className="absolute inset-0 rounded-lg bg-primary/10 dark:bg-accent/15 border border-transparent group-hover:border-primary/20 dark:group-hover:border-accent/30"
+                className="absolute inset-0 rounded-lg bg-accent/10 border border-accent/20 z-0"
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileHover={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.2 }}

@@ -10,15 +10,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#F5F6FA",
-        foreground: "#001C48",
-        surface: "#FFFFFF",
-        primary: "#00205B",
-        accent: "#D4AF37",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        surface: "var(--card)",
+        primary: "var(--primary)",
+        accent: "var(--accent)",
         link: "#0077C8",
-        muted: "#E5E7EB",
-        secondary: "#475569",
-        destructive: "#DC2626",
+        muted: "var(--muted)",
+        secondary: "var(--secondary)",
+        destructive: "var(--destructive)",
       },
     },
   },
