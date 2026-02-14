@@ -11,19 +11,22 @@ import { getSocialIcon } from "@/lib/icon-helper";
 import { useState } from "react";
 import Link from "next/link";
 import { toast } from "sonner";
+import { useConfetti } from "@/hooks/useConfetti";
 
 export default function ContactPage() {
   const [formState, setFormState] = useState({ name: "", email: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const fireConfetti = useConfetti();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));
-    
+
     setIsSubmitting(false);
+    fireConfetti();
     toast.success("Message sent successfully!", {
       description: "Thank you for reaching out. I'll get back to you soon.",
     });
@@ -65,13 +68,13 @@ export default function ContactPage() {
           </h1>
           <motion.div
             initial={{ scaleX: 0, opacity: 0 }}
-            animate={{ 
-              scaleX: 1, 
+            animate={{
+              scaleX: 1,
               opacity: 1,
             }}
-            transition={{ 
-              duration: 0.6, 
-              delay: 0.2, 
+            transition={{
+              duration: 0.6,
+              delay: 0.2,
               ease: [0.22, 1, 0.36, 1]
             }}
             className="relative h-1 w-24 bg-accent rounded-full mb-4 origin-left overflow-hidden"
@@ -109,7 +112,7 @@ export default function ContactPage() {
                     id="name"
                     placeholder="Your Name"
                     value={formState.name}
-                    onChange={e => setFormState({...formState, name: e.target.value})}
+                    onChange={e => setFormState({ ...formState, name: e.target.value })}
                     required
                     className="bg-background border-input text-foreground h-12"
                   />
@@ -120,7 +123,7 @@ export default function ContactPage() {
                     type="email"
                     placeholder="your@email.com"
                     value={formState.email}
-                    onChange={e => setFormState({...formState, email: e.target.value})}
+                    onChange={e => setFormState({ ...formState, email: e.target.value })}
                     required
                     className="bg-background border-input text-foreground h-12"
                   />
@@ -131,14 +134,14 @@ export default function ContactPage() {
                   id="message"
                   placeholder="Your message..."
                   value={formState.message}
-                  onChange={e => setFormState({...formState, message: e.target.value})}
+                  onChange={e => setFormState({ ...formState, message: e.target.value })}
                   required
                   className="min-h-[180px] bg-background border-input text-foreground resize-none"
                 />
               </div>
-              <Button 
-                type="submit" 
-                className="w-full h-12 bg-primary text-primary-foreground hover:bg-primary/90 font-medium" 
+              <Button
+                type="submit"
+                className="w-full h-12 bg-primary text-primary-foreground hover:bg-primary/90 font-medium"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
@@ -178,8 +181,8 @@ export default function ContactPage() {
                   </div>
                   <div className="flex-1">
                     {method.href ? (
-                      <a 
-                        href={method.href} 
+                      <a
+                        href={method.href}
                         className="text-sm font-medium text-foreground hover:text-accent transition-colors"
                       >
                         {method.value}

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
-import { ArrowRight, Download, MousePointer2 } from "lucide-react";
+import { ArrowRight, MousePointer2 } from "lucide-react";
 import Link from "next/link";
 import { FULL_NAME } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,14 @@ import { cn } from "@/lib/utils";
 function SpotlightGrid() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+
+  const spotlightBg = useMotionTemplate`
+    radial-gradient(
+      650px circle at ${mouseX}px ${mouseY}px,
+      rgba(14, 165, 233, 0.15),
+      transparent 80%
+    )
+  `;
 
   function handleMouseMove({ currentTarget, clientX, clientY }: ReactMouseEvent) {
     const { left, top } = currentTarget.getBoundingClientRect();
@@ -27,15 +35,7 @@ function SpotlightGrid() {
       <div className="absolute inset-0 bg-dot-thick-neutral-300 dark:bg-dot-thick-neutral-800 pointer-events-none" />
       <motion.div
         className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
-        style={{
-          background: useMotionTemplate`
-            radial-gradient(
-              650px circle at ${mouseX}px ${mouseY}px,
-              rgba(14, 165, 233, 0.15),
-              transparent 80%
-            )
-          `,
-        }}
+        style={{ background: spotlightBg }}
       />
     </div>
   );
@@ -49,7 +49,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden flex flex-col items-center justify-center bg-background antialiased">
+    <section className="relative h-dvh min-h-[500px] w-full overflow-hidden flex flex-col items-center justify-center bg-background antialiased">
       {/* Background Elements */}
       <div className="absolute inset-0 w-full h-full">
         <SpotlightGrid />
@@ -58,18 +58,18 @@ export default function HeroSection() {
 
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-        
+
         {/* Hero Title */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground mb-6"
+          className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground mb-4 sm:mb-6"
         >
           <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-500 to-purple-600 animate-gradient-x pb-2">
             {FULL_NAME}
           </span>
-          <span className="block text-2xl md:text-4xl lg:text-5xl font-medium text-muted-foreground mt-2">
+          <span className="block text-lg sm:text-2xl md:text-4xl lg:text-5xl font-medium text-muted-foreground mt-1 sm:mt-2">
             Senior Software Engineer
           </span>
         </motion.h1>
@@ -79,7 +79,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.05 }}
-          className="max-w-2xl text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed"
+          className="max-w-2xl text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-10 leading-relaxed"
         >
           Crafting scalable, pixel-perfect web applications with modern technologies.
           Specializing in backend and full-stack development.

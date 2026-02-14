@@ -1,12 +1,13 @@
 "use client";
 
+import type { LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { FEATURES } from "@/lib/constants";
 import { Code, Palette, Zap } from "lucide-react";
 
-const getIcon = (iconName: string) => {
-  const icons: Record<string, any> = {
+const getIcon = (iconName: string): LucideIcon => {
+  const icons: Record<string, LucideIcon> = {
     Code,
     Palette,
     Zap,
@@ -16,7 +17,7 @@ const getIcon = (iconName: string) => {
 
 export function ServicesSection() {
   return (
-    <section className="relative z-20 py-12 px-6 -mt-32 md:-mt-48" id="services">
+    <section className="relative z-20 py-16 px-6" id="services">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -12,17 +12,13 @@ import {
 import NavItemsMobile from "./NavItemsMobile";
 import { Menu, Mail } from "lucide-react";
 import { useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { FULL_NAME } from "@/lib/constants";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { scrollY } = useScroll();
-  
-  // Dynamic opacity based on scroll
-  const headerOpacity = useTransform(scrollY, [0, 50], [0, 1]);
-  const headerY = useTransform(scrollY, [0, 50], [0, 16]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,11 +37,10 @@ export default function Header() {
     >
       <div className="flex justify-center w-full px-4 py-4">
         <div
-          className={`flex items-center justify-between transition-all duration-500 ${ 
-            scrolled
+          className={`flex items-center justify-between transition-all duration-500 ${scrolled
               ? "w-full max-w-5xl rounded-full bg-background/80 backdrop-blur-md shadow-lg border border-border px-6 py-3"
               : "w-full max-w-7xl px-6 py-4 bg-transparent"
-          }`}
+            }`}
         >
           <Link href="/" className="relative group">
             <motion.div
@@ -60,8 +55,8 @@ export default function Header() {
                 whileHover={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.2 }}
               />
-              
-              <motion.div 
+
+              <motion.div
                 className="relative z-10 w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-primary/20 overflow-hidden"
                 whileHover={{ scale: 1.05 }}
               >
