@@ -268,6 +268,12 @@ export const FEATURES = [
   },
 ];
 
+export const mailConfig = {
+  user: process.env.EMAIL_USER as string,
+  pass: process.env.EMAIL_PASS as string,
+  to: process.env.EMAIL_USER as string, // or a different recipient
+} as const;
+
 export const SITE_NAME = "Prathin Sajith - Senior Software Engineer";
 export const FULL_NAME = "Prathin Sajith";
 export const SITE_URL = "https://prathinsajith.dev";

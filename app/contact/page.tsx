@@ -12,25 +12,56 @@ import { useState } from "react";
 import Link from "next/link";
 import { toast } from "sonner";
 import { useConfetti } from "@/hooks/useConfetti";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function ContactPage() {
-  const [formState, setFormState] = useState({ name: "", email: "", message: "" });
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const fireConfetti = useConfetti();
+  const contactSchema = z.object({
+    name: z.string().min(1, "Name is required"),
+    email: z.string().email("Invalid email address"),
+    message: z.string().min(1, "Message is required"),
+  });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  type FormData = z.infer<typeof contactSchema>;
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<FormData>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  });
 
-    setIsSubmitting(false);
-    fireConfetti();
-    toast.success("Message sent successfully!", {
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
-    setFormState({ name: "", email: "", message: "" });
+  const onSubmit = async (data: FormData) => {
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        fireConfetti();
+        toast.success("Message sent successfully!", {
+          description: "Thank you for reaching out. I'll get back to you soon.",
+        });
+        reset();
+      } else {
+        toast.error("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      toast.error("An error occurred. Please try again later.");
+    }
   };
 
   const contactMethods = [
@@ -105,39 +136,42 @@ export default function ContactPage() {
             transition={{ delay: 0.2 }}
             className="lg:col-span-3 bg-card border border-border rounded-2xl p-8 shadow-sm"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Input
                     id="name"
                     placeholder="Your Name"
-                    value={formState.name}
-                    onChange={e => setFormState({ ...formState, name: e.target.value })}
-                    required
+                    {...register("name")}
                     className="bg-background border-input text-foreground h-12"
                   />
+                  {errors.name && (
+                    <p className="text-xs text-destructive mt-1">{errors.name.message}</p>
+                  )}
                 </div>
                 <div className="space-y-2">
                   <Input
                     id="email"
                     type="email"
                     placeholder="your@email.com"
-                    value={formState.email}
-                    onChange={e => setFormState({ ...formState, email: e.target.value })}
-                    required
+                    {...register("email")}
                     className="bg-background border-input text-foreground h-12"
                   />
+                  {errors.email && (
+                    <p className="text-xs text-destructive mt-1">{errors.email.message}</p>
+                  )}
                 </div>
               </div>
               <div className="space-y-2">
                 <Textarea
                   id="message"
                   placeholder="Your message..."
-                  value={formState.message}
-                  onChange={e => setFormState({ ...formState, message: e.target.value })}
-                  required
+                  {...register("message")}
                   className="min-h-[180px] bg-background border-input text-foreground resize-none"
                 />
+                {errors.message && (
+                  <p className="text-xs text-destructive mt-1">{errors.message.message}</p>
+                )}
               </div>
               <Button
                 type="submit"
