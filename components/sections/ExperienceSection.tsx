@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Calendar, Briefcase } from "lucide-react";
 import { EXPERIENCE } from "@/lib/constants";
@@ -18,7 +18,7 @@ export function ExperienceSection() {
   return (
     <section className="relative z-10 py-32 px-6 overflow-hidden" id="experience" ref={containerRef}>
       <div className="max-w-7xl mx-auto relative">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -31,12 +31,12 @@ export function ExperienceSection() {
           <h3 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight">
             Professional Experience
           </h3>
-        </motion.div>
+        </m.div>
 
         <div className="relative space-y-16">
           {/* Animated Journey Line */}
           <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[2px] bg-border/30 hidden md:block">
-            <motion.div 
+            <m.div
               style={{ height: lineHeight }}
               className="w-full bg-accent origin-top shadow-[0_0_12px_rgba(var(--accent),0.5)]"
             />
@@ -45,21 +45,20 @@ export function ExperienceSection() {
           {EXPERIENCE.map((exp, index) => {
             const isEven = index % 2 === 0;
             return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+              <m.div
+                key={exp.title}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.7, delay: index * 0.1 }}
-                className={`relative flex flex-col md:flex-row gap-12 md:gap-0 ${
-                  isEven ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
+                className={`relative flex flex-col md:flex-row gap-12 md:gap-0 ${isEven ? "md:flex-row" : "md:flex-row-reverse"
+                  }`}
               >
                 {/* Journey Node */}
                 <div className="absolute left-8 md:left-1/2 -translate-x-1/2 top-0 z-20 flex items-center justify-center">
-                  <motion.div 
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
+                  <m.div
+                    initial={{ scale: 0.95, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ once: true }}
                     className="w-4 h-4 rounded-full bg-background border-4 border-foreground shadow-xl z-20"
                   />
@@ -86,9 +85,9 @@ export function ExperienceSection() {
                         </p>
 
                         <div className="flex flex-wrap gap-2">
-                          {exp.technologies.map((tech, i) => (
+                          {exp.technologies.map((tech) => (
                             <span
-                              key={i}
+                              key={tech}
                               className="px-3 py-1 text-xs md:text-sm font-medium rounded-full bg-secondary text-secondary-foreground border border-border hover:border-primary/50 hover:bg-primary/5 transition-colors cursor-default"
                             >
                               {tech}
@@ -102,7 +101,7 @@ export function ExperienceSection() {
 
                 {/* Empty Side for Balance */}
                 <div className="flex-1 hidden md:block" />
-              </motion.div>
+              </m.div>
             );
           })}
         </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import type { LucideIcon } from "lucide-react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { FEATURES } from "@/lib/constants";
 import { Code, Palette, Zap } from "lucide-react";
@@ -19,7 +19,7 @@ export function ServicesSection() {
   return (
     <section className="relative z-20 py-16 px-6" id="services">
       <div className="max-w-5xl mx-auto">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -32,13 +32,13 @@ export function ServicesSection() {
           <p className="text-2xl md:text-3xl font-bold text-foreground">
             Crafting Digital Excellence
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid md:grid-cols-3 gap-6">
           {FEATURES.map((feature, index) => {
             const Icon = getIcon(feature.icon);
             return (
-              <motion.div
+              <m.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -59,7 +59,7 @@ export function ServicesSection() {
                     </p>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </m.div>
             );
           })}
         </div>

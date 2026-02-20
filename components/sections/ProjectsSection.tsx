@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
@@ -11,7 +11,7 @@ export function ProjectsSection() {
   return (
     <section className="relative z-10 py-24 px-6 scroll-mt-28" id="projects">
       <div className="max-w-5xl mx-auto">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -24,12 +24,12 @@ export function ProjectsSection() {
           <p className="text-2xl md:text-3xl font-bold text-foreground">
             Featured Work
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {PROJECTS.map((project, index) => (
-            <motion.div
-              key={index}
+          {PROJECTS.map((project) => (
+            <m.div
+              key={project.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -43,6 +43,7 @@ export function ProjectsSection() {
                     alt={project.title}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
                 <CardContent className="p-6">
@@ -53,9 +54,9 @@ export function ProjectsSection() {
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech, i) => (
+                    {project.technologies.map((tech) => (
                       <span
-                        key={i}
+                        key={tech}
                         className="px-2.5 py-1 text-xs font-medium rounded-md bg-muted text-foreground border border-border"
                       >
                         {tech}
@@ -96,7 +97,7 @@ export function ProjectsSection() {
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

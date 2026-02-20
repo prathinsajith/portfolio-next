@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -17,7 +17,8 @@ export default function ScrollToTop() {
       }
     };
 
-    window.addEventListener("scroll", toggleVisibility);
+    toggleVisibility();
+    window.addEventListener("scroll", toggleVisibility, { passive: true });
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
@@ -31,11 +32,12 @@ export default function ScrollToTop() {
   return (
     <AnimatePresence>
       {isVisible && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
+        <m.div
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.5 }}
-          className="fixed bottom-8 right-8 z-50"
+          exit={{ opacity: 0, scale: 0.9 }}
+          suppressHydrationWarning
+          className="fixed bottom-8 right-8 z-[100]"
         >
           <Button
             variant="outline"
@@ -46,7 +48,7 @@ export default function ScrollToTop() {
           >
             <ArrowUp className="w-6 h-6" />
           </Button>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Image from "next/image";
 import { SKILLS, TOOLS } from "@/lib/constants";
 
@@ -22,12 +22,12 @@ export function RollingLogos({ type = "skills" }: RollingLogosProps) {
         <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10" />
 
         {/* Rolling logos container */}
-        <motion.div
+        <m.div
           className="flex gap-8 items-center"
+          initial={{ x: 0 }}
           animate={{
             x: [0, -50 * items.length],
           }}
-          style={{ willChange: "transform" }}
           transition={{
             x: {
               repeat: Number.POSITIVE_INFINITY,
@@ -51,7 +51,7 @@ export function RollingLogos({ type = "skills" }: RollingLogosProps) {
               />
             </div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </div>
   );

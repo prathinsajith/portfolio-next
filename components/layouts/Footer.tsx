@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { SOCIAL_LINKS, NAV_ITEMS, SITE_EMAIL, SITE_AUTHOR, FULL_NAME, SITE_PHONE } from "@/lib/constants";
 import { getSocialIcon } from "@/lib/icon-helper";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 export default function Footer() {
 
@@ -87,7 +87,7 @@ export default function Footer() {
               {SOCIAL_LINKS.map((link, index) => {
                 const Icon = getSocialIcon(link.icon);
                 return (
-                  <motion.a
+                  <m.a
                     key={link.name}
                     href={link.url}
                     target="_blank"
@@ -98,7 +98,7 @@ export default function Footer() {
                     aria-label={link.name}
                   >
                     <Icon className="w-5 h-5" />
-                  </motion.a>
+                  </m.a>
                 );
               })}
             </div>

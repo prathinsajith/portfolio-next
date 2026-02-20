@@ -6,9 +6,10 @@ import "./globals.css";
 import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/constants";
-import CustomCursor from "@/components/ui/CustomCursor";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import { Toaster } from "@/components/ui/sonner";
+import { MotionConfig, LazyMotion, domAnimation } from "framer-motion";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -62,12 +63,15 @@ export default function RootLayout({
           enableSystem={true}
           disableTransitionOnChange
         >
-          <Header />
-          <CustomCursor />
-          <ScrollToTop />
-          <Toaster richColors position="top-right" />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <MotionConfig reducedMotion="user">
+            <LazyMotion features={domAnimation}>
+              <Header />
+              <ScrollToTop />
+              <Toaster richColors position="top-right" />
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </LazyMotion>
+          </MotionConfig>
         </NextThemesProvider>
       </body>
     </html>

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import { m, useMotionTemplate, useMotionValue } from "framer-motion";
 import { ArrowRight, MousePointer2 } from "lucide-react";
 import Link from "next/link";
 import { FULL_NAME } from "@/lib/constants";
@@ -33,7 +33,7 @@ function SpotlightGrid() {
       onMouseMove={handleMouseMove}
     >
       <div className="absolute inset-0 bg-dot-thick-neutral-300 dark:bg-dot-thick-neutral-800 pointer-events-none" />
-      <motion.div
+      <m.div
         className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
         style={{ background: spotlightBg }}
       />
@@ -60,7 +60,7 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
 
         {/* Hero Title */}
-        <motion.h1
+        <m.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -72,10 +72,10 @@ export default function HeroSection() {
           <span className="block text-lg sm:text-2xl md:text-4xl lg:text-5xl font-medium text-muted-foreground mt-1 sm:mt-2">
             Senior Software Engineer
           </span>
-        </motion.h1>
+        </m.h1>
 
         {/* Subtitle */}
-        <motion.p
+        <m.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.05 }}
@@ -83,10 +83,10 @@ export default function HeroSection() {
         >
           Crafting scalable, pixel-perfect web applications with modern technologies.
           Specializing in backend and full-stack development.
-        </motion.p>
+        </m.p>
 
         {/* CTA Buttons */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
@@ -114,11 +114,11 @@ export default function HeroSection() {
               <MousePointer2 className="w-4 h-4" />
             </Link>
           </Button>
-        </motion.div>
+        </m.div>
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
@@ -126,13 +126,13 @@ export default function HeroSection() {
       >
         <span className="text-[10px] uppercase tracking-widest text-muted-foreground/50">Scroll</span>
         <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-border to-transparent overflow-hidden">
-          <motion.div
+          <m.div
             animate={{ y: [-48, 48] }}
             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
             className="w-full h-1/2 bg-primary/50 blur-[1px]"
           />
         </div>
-      </motion.div>
+      </m.div>
     </section>
   );
 }

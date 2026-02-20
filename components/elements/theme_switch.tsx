@@ -18,7 +18,7 @@ export function ModeToggle() {
 
   if (!mounted) {
     return (
-      <Button variant="outline" size="icon" disabled>
+      <Button variant="outline" size="icon" disabled suppressHydrationWarning>
         <Sun className="h-[1.2rem] w-[1.2rem]" />
         <span className="sr-only">Loading theme</span>
       </Button>
