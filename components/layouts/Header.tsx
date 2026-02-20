@@ -87,18 +87,18 @@ export default function Header() {
 
           {/* Right Side - Theme Toggle + Mobile Menu */}
           <div className="flex items-center space-x-3">
-            <Link href="/contact">
-              <m.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="relative hover:bg-accent/20 transition-colors rounded-full"
-                  aria-label="Contact"
-                >
-                  <Mail className="h-5 w-5 text-foreground" />
-                </Button>
-              </m.div>
-            </Link>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="relative hover:bg-accent/20 transition-colors rounded-full active:scale-95 duration-200"
+              aria-label="Contact Me"
+              asChild
+            >
+              <Link href="/contact">
+                <Mail className="h-5 w-5 text-foreground" />
+                <span className="sr-only">Contact Me</span>
+              </Link>
+            </Button>
 
             <m.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
               <ModeToggle />
@@ -108,21 +108,20 @@ export default function Header() {
             <div className="md:hidden">
               <Popover open={isOpen} onOpenChange={setIsOpen}>
                 <PopoverTrigger asChild>
-                  <m.div whileTap={{ scale: 0.9 }}>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="relative hover:bg-accent/20 transition-colors rounded-full"
-                      aria-label="Toggle menu"
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="relative hover:bg-accent/20 transition-colors rounded-full active:scale-95 duration-200"
+                    aria-label="Toggle menu"
+                  >
+                    <m.div
+                      animate={isOpen ? { rotate: 90 } : { rotate: 0 }}
+                      transition={{ duration: 0.2 }}
                     >
-                      <m.div
-                        animate={isOpen ? { rotate: 90 } : { rotate: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <Menu className="h-5 w-5 text-foreground" />
-                      </m.div>
-                    </Button>
-                  </m.div>
+                      <Menu className="h-5 w-5 text-foreground" />
+                    </m.div>
+                    <span className="sr-only">Toggle menu</span>
+                  </Button>
                 </PopoverTrigger>
                 <PopoverContent
                   align="end"

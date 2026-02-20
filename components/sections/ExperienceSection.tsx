@@ -38,7 +38,7 @@ export function ExperienceSection() {
           <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[2px] bg-border/30 hidden md:block">
             <m.div
               style={{ height: lineHeight }}
-              className="w-full bg-accent origin-top shadow-[0_0_12px_rgba(var(--accent),0.5)]"
+              className="w-full bg-accent origin-top shadow-[0_0_12px_var(--accent)]"
             />
           </div>
 
@@ -69,12 +69,12 @@ export function ExperienceSection() {
                   <div className="group relative">
                     <Card className="relative border border-border/50 bg-card/50 backdrop-blur-sm p-8 rounded-2xl hover:border-accent/50 transition-all duration-300 shadow-sm hover:shadow-lg">
                       <div className="flex flex-col items-start text-left">
-                        <span className="text-sm font-mono text-muted-foreground mb-2 block">
+                        <span className="text-sm font-mono text-foreground bg-muted/80 px-3 py-1 rounded-full mb-2 block w-fit border border-border/50 shadow-sm">
                           {exp.period}
                         </span>
-                        <h4 className="text-2xl md:text-3xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                        <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                           {exp.title}
-                        </h4>
+                        </h3>
                         <div className="flex items-center gap-2 text-lg text-muted-foreground mb-6">
                           <Briefcase className="w-5 h-5" />
                           <span className="font-medium">{exp.company}</span>

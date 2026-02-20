@@ -47,6 +47,7 @@ export default function ScrollToTop() {
             aria-label="Scroll to top"
           >
             <ArrowUp className="w-6 h-6" />
+            <span className="sr-only">Scroll to top</span>
           </Button>
         </m.div>
       )}

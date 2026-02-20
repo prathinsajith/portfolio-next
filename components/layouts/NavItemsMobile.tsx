@@ -32,8 +32,7 @@ const NavItemsMobile: React.FC<NavItemsMobileProps> = ({ onClose }) => {
               <m.div
                 whileHover={{ x: 5 }}
                 whileTap={{ scale: 0.98 }}
-                className={`w-full text-base font-semibold py-3 px-4 transition-all duration-300 ${isActive ? "text-accent" : "text-foreground/80"
-                  }`}
+                className={`w-full text-base font-semibold py-4 px-4 transition-all duration-300 ${isActive ? "text-accent" : "text-foreground"}`}
               >
                 {/* Active indicator line */}
                 {isActive && (

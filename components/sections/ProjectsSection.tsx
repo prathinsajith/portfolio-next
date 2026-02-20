@@ -74,6 +74,7 @@ export function ProjectsSection() {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={`View live ${project.title} project`}
                       >
                         <ExternalLink className="w-4 h-4 mr-2" />
                         View
@@ -89,6 +90,7 @@ export function ProjectsSection() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={`View ${project.title} source code on GitHub`}
                       >
                         <Github className="w-4 h-4 mr-2" />
                         Code

@@ -68,7 +68,9 @@ export default function RootLayout({
               <Header />
               <ScrollToTop />
               <Toaster richColors position="top-right" />
-              <main className="flex-1">{children}</main>
+              <main id="main-content" className="flex-1 outline-none">
+                {children}
+              </main>
               <Footer />
             </LazyMotion>
           </MotionConfig>

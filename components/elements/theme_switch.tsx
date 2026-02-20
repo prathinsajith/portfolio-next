@@ -32,7 +32,7 @@ export function ModeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon" className="relative bg-transparent">
+        <Button variant="outline" size="icon" className="relative bg-transparent" aria-label="Toggle theme">
           {theme === "light" && <Sun className="h-[1.2rem] w-[1.2rem] transition-transform duration-200" />}
           {theme === "dark" && <Moon className="h-[1.2rem] w-[1.2rem] transition-transform duration-200" />}
           {theme === "system" && <Monitor className="h-[1.2rem] w-[1.2rem] transition-transform duration-200" />}

@@ -59,9 +59,9 @@ export function CTASection() {
                 variant="outline"
                 size="lg"
                 asChild
-                className="h-12 px-8 text-base rounded-full border-border bg-background hover:bg-accent/10 hover:text-accent hover:border-accent/50 transition-all duration-300 min-w-[180px]"
+                className="h-12 px-8 text-base rounded-full border-border bg-background hover:bg-accent hover:text-accent-foreground transition-all duration-300 min-w-[180px]"
               >
-                <Link href="mailto:sprathin007@gmail.com" className="flex items-center justify-center gap-2">
+                <Link href="mailto:sprathin007@gmail.com" className="flex items-center justify-center gap-2" aria-label="Send me an email">
                   Say Hello
                   <Mail className="w-4 h-4" />
                 </Link>

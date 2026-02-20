@@ -65,14 +65,14 @@ export default function AboutClient() {
                                     <div key={`${exp.company}-${exp.period}`} className="relative pl-12 group">
                                         <div className="absolute left-[11px] top-1.5 w-2.5 h-2.5 rounded-full bg-border group-hover:bg-accent group-hover:scale-125 transition-all duration-300 ring-4 ring-background" />
                                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
-                                            <h3 className="text-lg font-bold text-foreground group-hover:text-accent transition-colors">
+                                            <h2 className="text-lg font-bold text-foreground group-hover:text-accent transition-colors">
                                                 {exp.title}
-                                            </h3>
-                                            <span className="text-xs font-mono text-muted-foreground bg-muted px-2 py-1 rounded">
+                                            </h2>
+                                            <span className="text-xs font-mono text-foreground bg-muted px-2 py-1 rounded shadow-sm border border-border/50">
                                                 {exp.period}
                                             </span>
                                         </div>
-                                        <p className="text-sm font-medium text-accent/80 mb-3">{exp.company}</p>
+                                        <p className="text-sm font-semibold text-accent mb-3">{exp.company}</p>
                                         <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                                             {exp.description}
                                         </p>
@@ -99,10 +99,10 @@ export default function AboutClient() {
                                     <div key={`${edu.institution}-${edu.period}`} className="bg-card/50 border border-border rounded-2xl p-6 hover:border-accent/30 transition-all duration-300">
                                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
                                             <div>
-                                                <h3 className="text-lg font-bold text-foreground">{edu.degree}</h3>
-                                                <p className="text-accent/80 text-sm font-medium">{edu.institution}</p>
+                                                <h2 className="text-lg font-bold text-foreground">{edu.degree}</h2>
+                                                <p className="text-accent text-sm font-semibold">{edu.institution}</p>
                                             </div>
-                                            <span className="text-xs font-mono text-muted-foreground bg-muted px-3 py-1 rounded-full self-start md:self-center">
+                                            <span className="text-xs font-mono text-foreground bg-muted px-3 py-1 rounded-full self-start md:self-center shadow-sm border border-border/50">
                                                 {edu.period}
                                             </span>
                                         </div>

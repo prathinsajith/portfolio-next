@@ -208,21 +208,21 @@ export default function ContactClient() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.5 + index * 0.1 }}
-                                    className="flex items-center gap-4 p-4 rounded-xl bg-secondary/30 border border-border/50 hover:bg-secondary/50 transition-colors"
+                                    className="flex items-center gap-4 p-4 rounded-xl bg-secondary/30 border border-border/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300 group"
                                 >
-                                    <div className="p-3 rounded-lg bg-primary/10 text-primary">
+                                    <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-accent-foreground/20 group-hover:text-accent-foreground">
                                         <method.icon className="h-5 w-5" />
                                     </div>
                                     <div className="flex-1">
                                         {method.href ? (
                                             <a
                                                 href={method.href}
-                                                className="text-sm font-medium text-foreground hover:text-accent transition-colors"
+                                                className="text-sm font-medium text-foreground group-hover:text-accent-foreground transition-colors"
                                             >
                                                 {method.value}
                                             </a>
                                         ) : (
-                                            <p className="text-sm font-medium text-foreground">{method.value}</p>
+                                            <p className="text-sm font-medium text-foreground group-hover:text-accent-foreground">{method.value}</p>
                                         )}
                                     </div>
                                 </m.div>
@@ -231,7 +231,7 @@ export default function ContactClient() {
 
                         {/* Social Links - Icon Based */}
                         <div className="pt-6 border-t border-border">
-                            <h3 className="text-sm font-semibold text-foreground mb-4">Connect</h3>
+                            <h2 className="text-sm font-semibold text-foreground mb-4">Connect</h2>
                             <div className="flex gap-3">
                                 {SOCIAL_LINKS.map((link, index) => {
                                     const Icon = getSocialIcon(link.icon);
