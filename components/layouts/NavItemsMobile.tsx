@@ -47,7 +47,7 @@ const NavItemsMobile: React.FC<NavItemsMobileProps> = ({ onClose }) => {
                 )}
 
                 <m.span
-                  className="absolute inset-0 bg-gradient-to-r from-primary/15 to-accent/15 dark:from-accent/20 dark:to-primary/20"
+                  className="absolute inset-0 bg-gradient-to-r from-primary/30 to-accent/30 dark:from-accent/25 dark:to-primary/25 dark:shadow-[inset_0_0_10px_rgba(189,36,38,0.2)]"
                   initial={{ opacity: 0, x: "-100%" }}
                   whileHover={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3 }}

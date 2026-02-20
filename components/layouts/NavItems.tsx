@@ -24,17 +24,17 @@ const NavItems = () => {
             >
               <span
                 className={`text-sm font-medium tracking-wide transition-all duration-300 relative z-10 ${isActive
-                    ? "text-accent"
-                    : "text-foreground/80 group-hover:text-accent"
+                  ? "text-accent"
+                  : "text-foreground/80 group-hover:text-accent"
                   }`}
               >
                 {item.label}
               </span>
 
               <m.span
-                className={`absolute bottom-1 left-4 right-4 h-0.5 rounded-full ${isActive
-                    ? "bg-accent shadow-[0_0_8px_rgba(212,175,55,0.6)]"
-                    : "bg-accent"
+                className={`absolute bottom-1 left-4 right-4 h-0.5 rounded-full z-10 ${isActive
+                  ? "bg-accent shadow-[0_0_8px_rgba(212,175,55,0.6)]"
+                  : "bg-accent"
                   }`}
                 initial={{ scaleX: isActive ? 1 : 0 }}
                 animate={{ scaleX: isActive ? 1 : 0 }}
@@ -43,7 +43,7 @@ const NavItems = () => {
               />
 
               <m.span
-                className="absolute inset-0 rounded-lg bg-accent/10 border border-accent/20 z-0"
+                className="absolute inset-0 rounded-lg bg-accent/25 dark:bg-accent/25 border border-accent/40 dark:border-accent/50 z-0 dark:shadow-[0_0_15px_rgba(189,36,38,0.3)]"
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileHover={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.2 }}

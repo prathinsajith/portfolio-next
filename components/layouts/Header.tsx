@@ -54,7 +54,7 @@ export default function Header() {
             >
               {/* Hover Background */}
               <m.span
-                className="absolute inset-0 rounded-lg bg-accent/20 border border-accent/40 z-0"
+                className="absolute inset-0 rounded-lg bg-accent/25 dark:bg-accent/25 border border-accent/50 dark:border-accent/60 z-0 dark:shadow-[0_0_15px_rgba(189,36,38,0.3)]"
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileHover={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.2 }}
