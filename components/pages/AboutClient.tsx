@@ -72,13 +72,13 @@ export default function AboutClient() {
                                                 {exp.period}
                                             </span>
                                         </div>
-                                        <p className="text-sm font-semibold text-accent mb-3">{exp.company}</p>
+                                        <p className="text-sm font-semibold text-accent-text mb-3">{exp.company}</p>
                                         <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                                             {exp.description}
                                         </p>
                                         <div className="flex flex-wrap gap-2">
-                                            {exp.technologies.map((tech, i) => (
-                                                <span key={i} className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground border border-border px-2 py-0.5 rounded">
+                                            {exp.technologies.map((tech) => (
+                                                <span key={tech} className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground border border-border px-2 py-0.5 rounded">
                                                     {tech}
                                                 </span>
                                             ))}
@@ -100,7 +100,7 @@ export default function AboutClient() {
                                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
                                             <div>
                                                 <h2 className="text-lg font-bold text-foreground">{edu.degree}</h2>
-                                                <p className="text-accent text-sm font-semibold">{edu.institution}</p>
+                                                <p className="text-accent-text text-sm font-semibold">{edu.institution}</p>
                                             </div>
                                             <span className="text-xs font-mono text-foreground bg-muted px-3 py-1 rounded-full self-start md:self-center shadow-sm border border-border/50">
                                                 {edu.period}

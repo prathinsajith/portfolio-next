@@ -24,8 +24,8 @@ const NavItems = () => {
             >
               <span
                 className={`text-sm font-medium tracking-wide transition-all duration-300 relative z-10 ${isActive
-                  ? "text-accent"
-                  : "text-foreground group-hover:text-accent"
+                  ? "text-accent-text"
+                  : "text-foreground group-hover:text-accent-text"
                   }`}
               >
                 {item.label}

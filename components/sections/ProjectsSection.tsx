@@ -47,7 +47,7 @@ export function ProjectsSection() {
                   />
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-accent transition-colors">
+                  <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-accent-text transition-colors">
                     {project.title}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-4">
@@ -68,7 +68,7 @@ export function ProjectsSection() {
                       size="sm"
                       variant="outline"
                       asChild
-                      className="border-accent/40 text-accent hover:bg-accent/10 bg-transparent"
+                      className="border-accent/40 text-accent-text hover:bg-accent/10 bg-transparent"
                     >
                       <a
                         href={project.link}
@@ -84,7 +84,7 @@ export function ProjectsSection() {
                       size="sm"
                       variant="outline"
                       asChild
-                      className="border-border hover:border-accent/40 hover:text-accent bg-transparent"
+                      className="border-border hover:border-accent/40 hover:text-accent-text bg-transparent"
                     >
                       <a
                         href={project.github}

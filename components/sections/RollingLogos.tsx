@@ -11,8 +11,11 @@ interface RollingLogosProps {
 export function RollingLogos({ type = "skills" }: RollingLogosProps) {
   const items = type === "tools" ? TOOLS : SKILLS;
 
-  // Duplicate the array for seamless loop
-  const duplicatedItems = [...items, ...items];
+  // Duplicate the array for seamless loop with unique identifiers
+  const duplicatedItems = [
+    ...items.map((item) => ({ ...item, id: `1-${item.name}` })),
+    ...items.map((item) => ({ ...item, id: `2-${item.name}` })),
+  ];
 
   return (
     <div className="w-full overflow-hidden py-8">
@@ -37,10 +40,10 @@ export function RollingLogos({ type = "skills" }: RollingLogosProps) {
             },
           }}
         >
-          {duplicatedItems.map((item, index) => (
+          {duplicatedItems.map((item) => (
             <div
-              key={`${item.name}-${index}`}
-              className="flex-shrink-0 w-16 h-16 rounded-xl bg-white dark:bg-white p-3 border border-border hover:border-accent/40 hover:scale-110 transition-all duration-200 flex items-center justify-center"
+              key={`${type}-${item.id}`}
+              className="flex-shrink-0 w-16 h-16 rounded-xl bg-card p-3 border border-border hover:border-accent/40 hover:scale-110 transition-all duration-200 flex items-center justify-center shadow-sm"
             >
               <Image
                 src={item.image || "/placeholder.svg"}

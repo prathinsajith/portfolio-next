@@ -39,19 +39,19 @@ export function ServicesSection() {
             const Icon = getIcon(feature.icon);
             return (
               <m.div
-                key={index}
+                key={feature.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
               >
-                <Card className="h-full border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-accent/10">
+                <Card className="h-full border-border bg-card/50 backdrop-blur-md hover:bg-card/80 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-accent/10">
                   <CardContent className="p-6 flex flex-col items-center text-center">
                     <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center text-accent mb-4 shadow-inner border border-white/5">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <h3 className="text-lg font-bold text-foreground mb-2">
+                    <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-accent-text transition-colors">
                       {feature.title}
                     </h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">

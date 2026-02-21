@@ -38,7 +38,7 @@ export default function Footer() {
                 <li key={item.label}>
                   <Link
                     href={item.href}
-                    className="text-sm text-muted-foreground hover:text-accent transition-colors"
+                    className="text-sm text-muted-foreground hover:text-accent-text transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -57,16 +57,16 @@ export default function Footer() {
                 <Mail className="w-4 h-4 mt-0.5 text-accent" />
                 <a
                   href={`mailto:${SITE_EMAIL}`}
-                  className="hover:text-accent transition-colors break-all"
+                  className="hover:text-accent-text transition-colors break-all"
                 >
                   {SITE_EMAIL}
                 </a>
               </li>
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
-                <Phone className="w-4 h-4 mt-0.5 text-accent" />
+                <Phone className="w-4 h-4 mt-0.5 text-accent-text" />
                 <a
                   href={`tel:${SITE_PHONE}`}
-                  className="hover:text-accent transition-colors"
+                  className="hover:text-accent-text transition-colors"
                 >
                   {SITE_PHONE}
                 </a>
@@ -114,10 +114,10 @@ export default function Footer() {
             </span>
           </div>
           <div className="flex gap-6 text-sm text-muted-foreground">
-            <Link href="#" className="hover:text-accent transition-colors">
+            <Link href="#" className="hover:text-accent-text transition-colors">
               Privacy Policy
             </Link>
-            <Link href="#" className="hover:text-accent transition-colors">
+            <Link href="#" className="hover:text-accent-text transition-colors">
               Terms of Service
             </Link>
           </div>
