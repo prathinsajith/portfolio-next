@@ -1,24 +1,24 @@
 import { SITE_URL } from "./constants";
 
-export interface ContactEmailData {
-    name: string;
-    email: string;
-    message: string;
+interface ContactEmailData {
+  name: string;
+  email: string;
+  message: string;
 }
 
 export const getContactEmailTemplate = (data: ContactEmailData) => {
-    const { name, email, message } = data;
+  const { name, email, message } = data;
 
-    // Design constants based on the portfolio theme
-    const primaryColor = "#12284c"; // Dark Blue from site
-    const accentColor = "#ffc62c"; // Yellow from site
-    const textColor = "#12284c";
-    const mutedTextColor = "#64748b";
-    const bgColor = "#f1f5f9"; // Muted background
-    const cardBg = "#ffffff";
-    const borderColor = "#e2e8f0";
+  // Design constants based on the portfolio theme
+  const primaryColor = "#12284c"; // Dark Blue from site
+  const accentColor = "#ffc62c"; // Yellow from site
+  const textColor = "#12284c";
+  const mutedTextColor = "#64748b";
+  const bgColor = "#f1f5f9"; // Muted background
+  const cardBg = "#ffffff";
+  const borderColor = "#e2e8f0";
 
-    return `
+  return `
     <!DOCTYPE html>
     <html lang="en">
       <head>

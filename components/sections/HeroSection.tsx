@@ -42,11 +42,6 @@ function SpotlightGrid() {
 }
 
 export default function HeroSection() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   return (
     <section className="relative h-dvh min-h-[500px] w-full overflow-hidden flex flex-col items-center justify-center bg-background antialiased">
