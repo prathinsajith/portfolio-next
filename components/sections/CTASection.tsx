@@ -3,11 +3,12 @@
 import { m } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight, Sparkles, Mail } from "lucide-react";
+import { FiArrowRight, FiMail } from "react-icons/fi";
+import { HiOutlineSparkles } from "react-icons/hi2";
 
 export function CTASection() {
   return (
-    <section className="relative z-10 py-24 w-full overflow-hidden bg-background">
+    <section className="relative z-10 py-16 w-full overflow-hidden bg-background">
       <div className="w-full max-w-[1200px] mx-auto px-6">
         <m.div
           initial={{ opacity: 0, y: 40 }}
@@ -26,7 +27,7 @@ export function CTASection() {
               transition={{ delay: 0.2 }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-sm font-medium text-accent-text"
             >
-              <Sparkles className="w-4 h-4" />
+              <HiOutlineSparkles className="w-4 h-4" />
               <span className="tracking-wide">Available for new opportunities</span>
             </m.div>
 
@@ -51,7 +52,7 @@ export function CTASection() {
               >
                 <Link href="/contact" className="flex items-center justify-center gap-2">
                   Start a Project
-                  <ArrowRight className="w-4 h-4" />
+                  <FiArrowRight className="w-4 h-4" />
                 </Link>
               </Button>
 
@@ -63,7 +64,7 @@ export function CTASection() {
               >
                 <Link href="mailto:sprathin007@gmail.com" className="flex items-center justify-center gap-2" aria-label="Send me an email">
                   Say Hello
-                  <Mail className="w-4 h-4" />
+                  <FiMail className="w-4 h-4" />
                 </Link>
               </Button>
             </div>

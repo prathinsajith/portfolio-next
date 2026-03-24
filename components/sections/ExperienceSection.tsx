@@ -2,7 +2,7 @@
 
 import { m, useScroll, useTransform } from "framer-motion";
 import { Card } from "@/components/ui/card";
-import { Calendar, Briefcase } from "lucide-react";
+import { FiCalendar, FiBriefcase } from "react-icons/fi";
 import { EXPERIENCE } from "@/lib/constants";
 import { useRef } from "react";
 
@@ -16,14 +16,14 @@ export function ExperienceSection() {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section className="relative z-10 py-32 px-6 overflow-hidden" id="experience" ref={containerRef}>
+    <section className="relative z-10 py-20 px-6 overflow-hidden" id="experience" ref={containerRef}>
       <div className="max-w-7xl mx-auto relative">
         <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-24 text-center"
+          className="mb-16 text-center"
         >
           <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-3">
             My Journey
@@ -76,7 +76,7 @@ export function ExperienceSection() {
                           {exp.title}
                         </h3>
                         <div className="flex items-center gap-2 text-lg text-muted-foreground mb-6">
-                          <Briefcase className="w-5 h-5" />
+                          <FiBriefcase className="w-5 h-5" />
                           <span className="font-medium">{exp.company}</span>
                         </div>
 

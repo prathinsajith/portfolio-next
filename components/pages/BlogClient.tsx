@@ -2,7 +2,7 @@
 
 import { m } from "framer-motion";
 import Link from "next/link";
-import { Calendar, Clock, ArrowRight, Tag } from "lucide-react";
+import { FiCalendar, FiClock, FiArrowRight, FiTag } from "react-icons/fi";
 import { Card, CardContent } from "@/components/ui/card";
 
 // Dummy data for blog posts
@@ -104,11 +104,11 @@ export default function BlogClient() {
                                 <CardContent className="p-6 flex-1 flex flex-col">
                                     <div className="flex items-center gap-4 text-xs font-medium text-muted-foreground mb-4">
                                         <span className="flex items-center gap-1">
-                                            <Calendar className="w-3 h-3" />
+                                            <FiCalendar className="w-3 h-3" />
                                             {post.date}
                                         </span>
                                         <span className="flex items-center gap-1">
-                                            <Clock className="w-3 h-3" />
+                                            <FiClock className="w-3 h-3" />
                                             {post.readTime}
                                         </span>
                                     </div>
@@ -128,7 +128,7 @@ export default function BlogClient() {
                                                     key={tag}
                                                     className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider bg-secondary/80 text-secondary-foreground px-2 py-0.5 rounded"
                                                 >
-                                                    <Tag className="w-2 h-2" />
+                                                    <FiTag className="w-2 h-2" />
                                                     {tag}
                                                 </span>
                                             ))}
@@ -139,7 +139,7 @@ export default function BlogClient() {
                                             className="inline-flex items-center gap-2 text-sm font-bold text-foreground group/link"
                                         >
                                             Read Article
-                                            <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                                            <FiArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                                         </Link>
                                     </div>
                                 </CardContent>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { m, AnimatePresence } from "framer-motion";
-import { ArrowUp } from "lucide-react";
+import { FiArrowUp } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 
 export default function ScrollToTop() {
@@ -46,7 +46,7 @@ export default function ScrollToTop() {
             className="rounded-full w-12 h-12 bg-background/80 backdrop-blur-sm border-border hover:border-accent hover:text-accent shadow-lg transition-all duration-300"
             aria-label="Scroll to top"
           >
-            <ArrowUp className="w-6 h-6" />
+            <FiArrowUp className="w-6 h-6" />
             <span className="sr-only">Scroll to top</span>
           </Button>
         </m.div>

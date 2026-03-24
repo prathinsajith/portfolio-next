@@ -10,7 +10,7 @@ import {
   PopoverContent,
 } from "@/components/ui/popover";
 import NavItemsMobile from "./NavItemsMobile";
-import { Menu, Mail } from "lucide-react";
+import { FiMenu, FiMail } from "react-icons/fi";
 import { useState, useEffect } from "react";
 import { m, useScroll } from "framer-motion";
 import { FULL_NAME } from "@/lib/constants";
@@ -95,12 +95,18 @@ export default function Header() {
               asChild
             >
               <Link href="/contact">
-                <Mail className="h-5 w-5 text-foreground" />
+                <FiMail className="h-5 w-5 text-foreground" />
                 <span className="sr-only">Contact Me</span>
               </Link>
             </Button>
 
-            <m.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+            <m.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
               <ModeToggle />
             </m.div>
 
@@ -118,7 +124,7 @@ export default function Header() {
                       animate={isOpen ? { rotate: 90 } : { rotate: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Menu className="h-5 w-5 text-foreground" />
+                      <FiMenu className="h-5 w-5 text-foreground" />
                     </m.div>
                     <span className="sr-only">Toggle menu</span>
                   </Button>

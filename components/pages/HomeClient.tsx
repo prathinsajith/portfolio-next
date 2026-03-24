@@ -5,6 +5,7 @@ import { RollingLogos } from "@/components/sections/RollingLogos";
 import HeroSection from "@/components/sections/HeroSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
+import { TechStackSection } from "@/components/sections/TechStackSection";
 import { CTASection } from "@/components/sections/CTASection";
 import { useEffect } from "react";
 import { toast } from "sonner";
@@ -30,28 +31,8 @@ export default function HomeClient() {
             {/* Services Section */}
             <ServicesSection />
 
-            {/* Skills Section */}
-            <section className="relative z-10 py-16 px-6" id="skills">
-                <div className="max-w-5xl mx-auto">
-                    <m.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="space-y-6"
-                    >
-                        <div>
-                            <h2 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-2">
-                                Tech Stack
-                            </h2>
-                            <p className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-                                Technologies I Work With
-                            </p>
-                        </div>
-                        <RollingLogos />
-                    </m.div>
-                </div>
-            </section>
+            {/* Tech Stack Section */}
+            <TechStackSection />
 
             {/* Experience Section */}
             <ExperienceSection />

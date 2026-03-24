@@ -2,11 +2,10 @@
 
 import Link from "next/link";
 import {
-  Copyright,
-  Mail,
-  MapPin,
-  Phone,
-} from "lucide-react";
+  FiMail,
+  FiMapPin,
+  FiPhone,
+} from "react-icons/fi";
 import { SOCIAL_LINKS, NAV_ITEMS, SITE_EMAIL, SITE_AUTHOR, FULL_NAME, SITE_PHONE } from "@/lib/constants";
 import { getSocialIcon } from "@/lib/icon-helper";
 import { m } from "framer-motion";
@@ -54,7 +53,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
-                <Mail className="w-4 h-4 mt-0.5 text-accent" />
+                <FiMail className="w-4 h-4 mt-0.5 text-accent" />
                 <a
                   href={`mailto:${SITE_EMAIL}`}
                   className="hover:text-accent-text transition-colors break-all"
@@ -63,7 +62,7 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
-                <Phone className="w-4 h-4 mt-0.5 text-accent-text" />
+                <FiPhone className="w-4 h-4 mt-0.5 text-accent-text" />
                 <a
                   href={`tel:${SITE_PHONE}`}
                   className="hover:text-accent-text transition-colors"
@@ -72,7 +71,7 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
-                <MapPin className="w-4 h-4 mt-0.5 text-accent" />
+                <FiMapPin className="w-4 h-4 mt-0.5 text-accent" />
                 <span>Dubai, United Arab Emirates</span>
               </li>
             </ul>
@@ -108,7 +107,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-sm text-muted-foreground flex items-center gap-2">
-            <Copyright className="w-4 h-4" />
+            <span className="w-4 h-4 text-center leading-none">©</span>
             <span>
               {new Date().getFullYear()} {SITE_AUTHOR}. All rights reserved.
             </span>

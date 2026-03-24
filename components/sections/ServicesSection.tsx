@@ -1,30 +1,32 @@
 "use client";
 
-import type { LucideIcon } from "lucide-react";
+import type { IconType } from "react-icons";
 import { m } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { FEATURES } from "@/lib/constants";
-import { Code, Palette, Zap } from "lucide-react";
+import { FiCode, FiUsers, FiZap } from "react-icons/fi";
+import { RiPaletteLine } from "react-icons/ri";
 
-const getIcon = (iconName: string): LucideIcon => {
-  const icons: Record<string, LucideIcon> = {
-    Code,
-    Palette,
-    Zap,
+const getIcon = (iconName: string): IconType => {
+  const icons: Record<string, IconType> = {
+    Code: FiCode,
+    Palette: RiPaletteLine,
+    Users: FiUsers,
+    Zap: FiZap,
   };
-  return icons[iconName] || Code;
+  return icons[iconName] || FiCode;
 };
 
 export function ServicesSection() {
   return (
-    <section className="relative z-20 py-16 px-6" id="services">
+    <section className="relative z-20 py-12 px-6" id="services">
       <div className="max-w-5xl mx-auto">
         <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
+          className="mb-8 text-center"
         >
           <h2 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-2">
             What I Do

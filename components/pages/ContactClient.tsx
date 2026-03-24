@@ -2,7 +2,7 @@
 
 import { m } from "framer-motion";
 import { SITE_EMAIL, SOCIAL_LINKS, SITE_PHONE } from "@/lib/constants";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { FiMail, FiPhone, FiMapPin, FiSend, FiMessageSquare } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -66,19 +66,19 @@ export default function ContactClient() {
 
     const contactMethods = [
         {
-            icon: Mail,
+            icon: FiMail,
             label: "Email",
             value: SITE_EMAIL,
             href: `mailto:${SITE_EMAIL}`,
         },
         {
-            icon: Phone,
+            icon: FiPhone,
             label: "Phone",
-            value: SITE_PHONE || "+971 XX XXX XXXX",
+            value: SITE_PHONE,
             href: `tel:${SITE_PHONE}`,
         },
         {
-            icon: MapPin,
+            icon: FiMapPin,
             label: "Location",
             value: "Dubai, UAE",
             href: null,
@@ -86,46 +86,31 @@ export default function ContactClient() {
     ];
 
     return (
-        <div className="min-h-screen pt-32 pb-12 px-6 bg-background">
-            <div className="max-w-6xl mx-auto">
-                {/* Clean Title */}
+        <div className="min-h-screen pt-32 pb-12 px-6 bg-background relative overflow-hidden">
+            {/* Subtle Background Elements */}
+            <div className="absolute top-0 center-0 w-full h-full bg-[radial-gradient(ellipse_at_top,var(--primary),transparent)] opacity-[0.03] pointer-events-none" />
+            <div className="absolute inset-0 bg-dot-thick-neutral-300 dark:bg-dot-thick-neutral-800 opacity-20 pointer-events-none" />
+
+            <div className="max-w-6xl mx-auto relative z-10">
+                {/* Unique Heading Style */}
                 <m.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="mb-16"
+                    transition={{ duration: 0.6 }}
+                    className="mb-12"
                 >
-                    <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                        Contact Me
+                    <p className="text-[11px] font-bold uppercase tracking-[0.35em] text-muted-foreground mb-3">
+                        Portfolio / Contact
+                    </p>
+                    <h1 className="text-5xl font-extrabold text-foreground tracking-tight leading-tight mb-5">
+                        Contact
                     </h1>
                     <m.div
-                        initial={{ scaleX: 0, opacity: 0 }}
-                        animate={{
-                            scaleX: 1,
-                            opacity: 1,
-                        }}
-                        transition={{
-                            duration: 0.6,
-                            delay: 0.2,
-                            ease: [0.22, 1, 0.36, 1]
-                        }}
-                        className="relative h-1 w-24 bg-accent rounded-full mb-4 origin-left overflow-hidden"
-                    >
-                        <m.div
-                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
-                            animate={{
-                                x: ['-100%', '100%'],
-                            }}
-                            transition={{
-                                duration: 2,
-                                repeat: Infinity,
-                                ease: 'linear',
-                                delay: 0.8,
-                            }}
-                        />
-                    </m.div>
-                    <p className="text-lg text-muted-foreground">
-                        Let's work together on your next project
-                    </p>
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                        className="h-[3px] w-16 bg-accent origin-left rounded-full"
+                    />
                 </m.div>
 
                 <div className="grid lg:grid-cols-5 gap-12">
@@ -143,7 +128,7 @@ export default function ContactClient() {
                                         id="name"
                                         placeholder="Your Name"
                                         {...register("name")}
-                                        className="bg-background border-input text-foreground h-12"
+                                        className="bg-background border-input text-foreground h-12 rounded-xl"
                                     />
                                     {errors.name && (
                                         <p className="text-xs text-destructive mt-1">{errors.name.message}</p>
@@ -155,7 +140,7 @@ export default function ContactClient() {
                                         type="email"
                                         placeholder="your@email.com"
                                         {...register("email")}
-                                        className="bg-background border-input text-foreground h-12"
+                                        className="bg-background border-input text-foreground h-12 rounded-xl"
                                     />
                                     {errors.email && (
                                         <p className="text-xs text-destructive mt-1">{errors.email.message}</p>
@@ -167,7 +152,7 @@ export default function ContactClient() {
                                     id="message"
                                     placeholder="Your message..."
                                     {...register("message")}
-                                    className="min-h-[180px] bg-background border-input text-foreground resize-none"
+                                    className="min-h-[180px] bg-background border-input text-foreground resize-none rounded-xl"
                                 />
                                 {errors.message && (
                                     <p className="text-xs text-destructive mt-1">{errors.message.message}</p>
@@ -175,17 +160,17 @@ export default function ContactClient() {
                             </div>
                             <Button
                                 type="submit"
-                                className="w-full h-12 bg-primary text-primary-foreground hover:bg-primary/90 font-medium"
+                                className="w-full h-12 bg-primary text-primary-foreground hover:bg-primary/90 font-bold uppercase tracking-widest text-[10px] rounded-xl"
                                 disabled={isSubmitting}
                             >
                                 {isSubmitting ? (
                                     <>
                                         <Spinner className="mr-2" />
-                                        Sending...
+                                        Transmitting...
                                     </>
                                 ) : (
                                     <>
-                                        <Send className="mr-2 h-4 w-4" />
+                                        <FiSend className="mr-2 h-4 w-4" />
                                         Send Message
                                     </>
                                 )}
@@ -200,7 +185,6 @@ export default function ContactClient() {
                         transition={{ delay: 0.4 }}
                         className="lg:col-span-2 space-y-6"
                     >
-                        {/* Contact Methods - Icon Based */}
                         <div className="space-y-4">
                             {contactMethods.map((method, index) => (
                                 <m.div
@@ -208,30 +192,30 @@ export default function ContactClient() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.5 + index * 0.1 }}
-                                    className="flex items-center gap-4 p-4 rounded-xl bg-secondary/30 border border-border/50 hover:bg-accent hover:text-accent-foreground transition-all duration-300 group"
+                                    className="flex items-center gap-4 p-4 rounded-xl bg-secondary/30 border border-border/50 hover:bg-accent hover:text-white transition-all duration-300 group"
                                 >
-                                    <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-accent-foreground/20 group-hover:text-accent-foreground">
+                                    <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-white/20 group-hover:text-white">
                                         <method.icon className="h-5 w-5" />
                                     </div>
                                     <div className="flex-1">
+                                        <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-1 group-hover:text-white/70">{method.label}</p>
                                         {method.href ? (
                                             <a
                                                 href={method.href}
-                                                className="text-sm font-medium text-foreground group-hover:text-accent-foreground transition-colors"
+                                                className="text-md font-bold text-foreground group-hover:text-white transition-colors"
                                             >
                                                 {method.value}
                                             </a>
                                         ) : (
-                                            <p className="text-sm font-medium text-foreground group-hover:text-accent-foreground">{method.value}</p>
+                                            <p className="text-md font-bold text-foreground group-hover:text-white">{method.value}</p>
                                         )}
                                     </div>
                                 </m.div>
                             ))}
                         </div>
 
-                        {/* Social Links - Icon Based */}
                         <div className="pt-6 border-t border-border">
-                            <h2 className="text-sm font-semibold text-foreground mb-4">Connect</h2>
+                            <h2 className="text-[10px] font-bold text-foreground uppercase tracking-[0.2em] mb-4">Connect</h2>
                             <div className="flex gap-3">
                                 {SOCIAL_LINKS.map((link, index) => {
                                     const Icon = getSocialIcon(link.icon);
@@ -245,7 +229,7 @@ export default function ContactClient() {
                                             <Link
                                                 href={link.url}
                                                 target="_blank"
-                                                className="flex items-center justify-center w-12 h-12 rounded-full bg-secondary/50 border border-border hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 group"
+                                                className="flex items-center justify-center w-12 h-12 rounded-xl bg-secondary/50 border border-border hover:bg-accent hover:text-white hover:border-accent transition-all duration-300 group"
                                                 aria-label={link.name}
                                             >
                                                 <Icon className="w-5 h-5" />

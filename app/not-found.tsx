@@ -2,7 +2,7 @@
 
 import { m } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft, Home, Search } from "lucide-react";
+import { FiArrowLeft, FiHome, FiSearch } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
@@ -23,7 +23,7 @@ export default function NotFound() {
                     className="relative inline-block"
                 >
                     <div className="w-24 h-24 rounded-3xl bg-accent/10 flex items-center justify-center text-accent mx-auto mb-6 border border-accent/20">
-                        <Search className="w-12 h-12" />
+                        <FiSearch className="w-12 h-12" />
                     </div>
                     <m.div
                         animate={{ rotate: 360 }}
@@ -74,7 +74,7 @@ export default function NotFound() {
                         className="h-12 px-8 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all hover:scale-105 min-w-[180px]"
                     >
                         <Link href="/" className="flex items-center gap-2">
-                            <Home className="w-4 h-4" />
+                            <FiHome className="w-4 h-4" />
                             Return Home
                         </Link>
                     </Button>
@@ -86,7 +86,7 @@ export default function NotFound() {
                         className="h-12 px-8 rounded-full border-border hover:bg-secondary/80 transition-all hover:scale-105 min-w-[180px]"
                     >
                         <div className="flex items-center gap-2">
-                            <ArrowLeft className="w-4 h-4" />
+                            <FiArrowLeft className="w-4 h-4" />
                             Go Back
                         </div>
                     </Button>
