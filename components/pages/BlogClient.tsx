@@ -46,20 +46,30 @@ const CATEGORIES = ["All", "Web Dev", "Design", "Next.js", "PHP", "Career"];
 
 export default function BlogClient() {
     return (
-        <div className="min-h-screen pt-32 pb-20 px-6 bg-background">
-            <div className="max-w-7xl mx-auto">
+        <div className="min-h-screen pt-28 pb-20 px-6 bg-background">
+            <div className="max-w-6xl mx-auto">
                 {/* Header */}
-                <div className="mb-16">
+                <div className="mb-12">
                     <m.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="mb-6"
+                        transition={{ duration: 0.6 }}
+                        className="mb-8"
                     >
-                        <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-                            Insights & <span className="text-accent">Articles</span>
+                        <p className="text-[11px] font-bold uppercase tracking-[0.35em] text-muted-foreground mb-3">
+                            Portfolio / Blog
+                        </p>
+                        <h1 className="text-5xl font-extrabold text-foreground tracking-tight leading-tight mb-5">
+                            Blog
                         </h1>
-                        <p className="text-lg text-muted-foreground max-w-2xl">
-                            Thoughts on software engineering, technology trends, and the lessons I've learned
+                        <m.div
+                            initial={{ scaleX: 0 }}
+                            animate={{ scaleX: 1 }}
+                            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                            className="h-[3px] w-16 bg-accent origin-left rounded-full mb-6"
+                        />
+                        <p className="text-base text-muted-foreground max-w-2xl">
+                            Thoughts on software engineering, technology trends, and the lessons I&apos;ve learned
                             throughout my journey as a developer.
                         </p>
                     </m.div>
@@ -113,7 +123,7 @@ export default function BlogClient() {
                                         </span>
                                     </div>
 
-                                    <h2 className="text-xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors line-clamp-2">
+                                    <h2 className="text-xl font-bold text-foreground mb-3 group-hover:text-foreground/80 transition-colors line-clamp-2">
                                         {post.title}
                                     </h2>
 

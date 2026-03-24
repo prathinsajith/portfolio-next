@@ -72,23 +72,23 @@ export default function HeroSection() {
   };
 
   return (
-    <section 
+    <section
       className="relative h-dvh min-h-[600px] w-full overflow-hidden flex flex-col items-center justify-center bg-background antialiased"
     >
       {/* Dynamic Background Elements */}
       <m.div style={{ y: yBg }} className="absolute inset-0 w-full h-full pointer-events-none">
         <SpotlightGrid />
-        
+
         {/* Floating Shapes */}
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse delay-700" />
         <div className="absolute top-1/2 left-2/3 w-48 h-48 bg-blue-500/5 rounded-full blur-3xl animate-pulse delay-1000" />
-        
+
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
       </m.div>
 
       {/* Main Content */}
-      <m.div 
+      <m.div
         style={{ y: y1, opacity }}
         variants={containerVariants}
         initial="hidden"
@@ -99,16 +99,16 @@ export default function HeroSection() {
         <div className="mb-4 sm:mb-6">
           <m.h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground flex flex-wrap justify-center gap-x-[0.3em]">
             {titleWords.map((word, i) => (
-              <m.span 
-                key={i} 
+              <m.span
+                key={i}
                 variants={wordVariants}
-                className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-500 to-purple-600 animate-gradient-x pb-2"
+                className="inline-block text-foreground pb-2"
               >
                 {word}
               </m.span>
             ))}
           </m.h1>
-          <m.div 
+          <m.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}

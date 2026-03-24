@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FiArrowRight, FiMail } from "react-icons/fi";
 import { HiOutlineSparkles } from "react-icons/hi2";
+import { SITE_EMAIL } from "@/lib/constants";
 
 export function CTASection() {
   return (
@@ -62,7 +63,7 @@ export function CTASection() {
                 asChild
                 className="h-12 px-8 text-base rounded-full border-border bg-background hover:bg-accent hover:text-accent-foreground transition-all duration-300 min-w-[180px]"
               >
-                <Link href="mailto:sprathin007@gmail.com" className="flex items-center justify-center gap-2" aria-label="Send me an email">
+                <Link href={`mailto:${SITE_EMAIL}`} className="flex items-center justify-center gap-2" aria-label="Send me an email">
                   Say Hello
                   <FiMail className="w-4 h-4" />
                 </Link>

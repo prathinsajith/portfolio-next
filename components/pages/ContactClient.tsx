@@ -2,7 +2,7 @@
 
 import { m } from "framer-motion";
 import { SITE_EMAIL, SOCIAL_LINKS, SITE_PHONE } from "@/lib/constants";
-import { FiMail, FiPhone, FiMapPin, FiSend, FiMessageSquare } from "react-icons/fi";
+import { FiMail, FiPhone, FiMapPin, FiSend } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -88,7 +88,7 @@ export default function ContactClient() {
     return (
         <div className="min-h-screen pt-32 pb-12 px-6 bg-background relative overflow-hidden">
             {/* Subtle Background Elements */}
-            <div className="absolute top-0 center-0 w-full h-full bg-[radial-gradient(ellipse_at_top,var(--primary),transparent)] opacity-[0.03] pointer-events-none" />
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,var(--primary),transparent)] opacity-[0.03] pointer-events-none" />
             <div className="absolute inset-0 bg-dot-thick-neutral-300 dark:bg-dot-thick-neutral-800 opacity-20 pointer-events-none" />
 
             <div className="max-w-6xl mx-auto relative z-10">
@@ -192,22 +192,22 @@ export default function ContactClient() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.5 + index * 0.1 }}
-                                    className="flex items-center gap-4 p-4 rounded-xl bg-secondary/30 border border-border/50 hover:bg-accent hover:text-white transition-all duration-300 group"
+                                    className="flex items-center gap-4 p-4 rounded-xl bg-card border border-border hover:border-accent/50 transition-all duration-200 group"
                                 >
-                                    <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-white/20 group-hover:text-white">
+                                    <div className="p-3 rounded-lg bg-accent/10 text-accent">
                                         <method.icon className="h-5 w-5" />
                                     </div>
                                     <div className="flex-1">
-                                        <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-1 group-hover:text-white/70">{method.label}</p>
+                                        <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-1">{method.label}</p>
                                         {method.href ? (
                                             <a
                                                 href={method.href}
-                                                className="text-md font-bold text-foreground group-hover:text-white transition-colors"
+                                                className="text-base font-bold text-foreground hover:text-accent transition-colors"
                                             >
                                                 {method.value}
                                             </a>
                                         ) : (
-                                            <p className="text-md font-bold text-foreground group-hover:text-white">{method.value}</p>
+                                            <p className="text-base font-bold text-foreground">{method.value}</p>
                                         )}
                                     </div>
                                 </m.div>
@@ -229,7 +229,8 @@ export default function ContactClient() {
                                             <Link
                                                 href={link.url}
                                                 target="_blank"
-                                                className="flex items-center justify-center w-12 h-12 rounded-xl bg-secondary/50 border border-border hover:bg-accent hover:text-white hover:border-accent transition-all duration-300 group"
+                                                rel="noopener noreferrer"
+                                                className="flex items-center justify-center w-12 h-12 rounded-xl border border-border hover:border-accent hover:bg-accent/5 text-foreground/50 hover:text-foreground transition-all duration-200"
                                                 aria-label={link.name}
                                             >
                                                 <Icon className="w-5 h-5" />

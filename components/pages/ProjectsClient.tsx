@@ -4,8 +4,7 @@ import { m, useScroll, useTransform } from "framer-motion";
 import { PROJECTS } from "@/lib/constants";
 import Image from "next/image";
 import Link from "next/link";
-import { FiExternalLink, FiLayers, FiCode, FiArrowRight } from "react-icons/fi";
-import { FaGithub } from "react-icons/fa";
+import { FiExternalLink, FiCode, FiArrowRight } from "react-icons/fi";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -20,12 +19,8 @@ export default function ProjectsClient() {
     const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
     return (
-        <div className="min-h-screen pt-32 pb-12 px-6 bg-background relative overflow-hidden" ref={containerRef}>
-            {/* Subtle Background Elements */}
-            <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_top_right,var(--primary),transparent)] opacity-[0.03] pointer-events-none" />
-            <div className="absolute inset-0 bg-dot-thick-neutral-300 dark:bg-dot-thick-neutral-800 opacity-20 pointer-events-none" />
-
-            <div className="max-w-7xl mx-auto relative z-10">
+        <div className="min-h-screen pt-28 pb-16 px-6 bg-background" ref={containerRef}>
+            <div className="max-w-6xl mx-auto">
                 {/* Unique Heading Style */}
                 <m.div
                     initial={{ opacity: 0, y: 24 }}
@@ -52,7 +47,7 @@ export default function ProjectsClient() {
                     <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[2px] bg-border/30 hidden md:block">
                         <m.div
                             style={{ height: lineHeight }}
-                            className="w-full bg-accent origin-top shadow-[0_0_12px_var(--accent)]"
+                            className="w-full bg-accent origin-top"
                         />
                     </div>
 
