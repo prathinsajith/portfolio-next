@@ -325,7 +325,7 @@ export const mailConfig = {
 
 export const SITE_NAME = "Prathin Sajith - Senior Software Engineer & Team Lead";
 export const FULL_NAME = "Prathin Sajith";
-export const SITE_URL = "https://prathinsajith.dev";
+export const SITE_URL = "https://prathinsajith-portfolio.vercel.app";
 export const SITE_AUTHOR = "Prathin Sajith";
 export const SITE_EMAIL = "prathinsajith@gmail.com";
 export const SITE_PHONE = "+971 564582402";
